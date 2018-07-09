@@ -5,6 +5,7 @@ import Cards.Card;
 import Cards.MonsterCard.Monster;
 import Player.Player;
 import World.World;
+import com.company.Main;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -257,7 +258,8 @@ public class Drawers {
                 playCard.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        //TODO:
+                        Main.sendCommand("set " + world.thePlayer.hand.indexOf(selectedCard) + "\n");
+                        selectedCard = null;
                     }
                 });
                 root.getChildren().addAll(playCard);

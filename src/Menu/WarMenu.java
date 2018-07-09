@@ -26,7 +26,7 @@ public abstract class WarMenu {
                     System.out.println("'" +monster.name + "' :");
                     System.out.println("info: " + monster.description);
 
-                    String commandInSpellCasting = Main.scanner.nextLine();
+                    String commandInSpellCasting = Main.readCommand();
                     System.out.println("List of Targets:");
                     System.out.println("1. " + enemySide.actorName);
                     for (int i = 0; i < enemySide.monsterField.size(); i++) {
@@ -85,7 +85,7 @@ public abstract class WarMenu {
                     System.out.println("'" +monster.name + "' :");
                     System.out.println("info: " + monster.description);
 
-                    String commandInSpellCasting = Main.scanner.nextLine();
+                    String commandInSpellCasting = Main.readCommand();
                     System.out.println("List of Targets:");
                     System.out.println("1. " + enemySide.actorName);
                     for (int i = 0; i < enemySide.monsterField.size(); i++) {
@@ -169,7 +169,7 @@ public abstract class WarMenu {
 
             if (monster.type == Type.Normal) {
                 //normal cards
-                String commandInUseMode = Main.scanner.nextLine();
+                String commandInUseMode = Main.readCommand();
 
                 //Info:
                 if (commandInUseMode.contains("Info")) {
@@ -211,7 +211,7 @@ public abstract class WarMenu {
                     Main.again += "False";
                 }
 
-                String commandInUseMode = Main.scanner.nextLine();
+                String commandInUseMode = Main.readCommand();
 
 
                 //Info:
@@ -318,7 +318,7 @@ public abstract class WarMenu {
                         System.out.println(j + " " + spell.name);
                         Main.again += (j + " " + spell.name);
                     }
-                    String commandInSpellCasting = Main.scanner.nextLine();
+                    String commandInSpellCasting = Main.readCommand();
                     //Again:
                     if(commandInSpellCasting.contains("Again")){
                         System.out.println(Main.again);
@@ -429,7 +429,7 @@ public abstract class WarMenu {
             System.out.println("Equipped amulet :" + player.equippedAmulet.name);
         }
         while (true){
-            String command = Main.scanner.nextLine();
+            String command = Main.readCommand();
             for(int i = 0;i < player.inventory.amulets.size(); i++){
                 Amulet amulet = player.inventory.amulets.get(i);
                 System.out.println(i + ". " + amulet.name +"     \\\\info: " + amulet.name);

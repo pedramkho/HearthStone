@@ -26,20 +26,24 @@ import java.util.Scanner;
 public class Main {
     public static boolean exitToMain = false;
     public static boolean someoneLost = false;
+    public static boolean commandSent = false;
     static InputStream inputStream = new ByteArrayInputStream("".getBytes());
 
     public static String readCommand() {
-        while(!commandSent){}
-        commandSent = false;
+        while(!Main.commandSent){
+        }
+        Main.commandSent = false;
         inputStream = new ByteArrayInputStream(command.getBytes());
+        System.out.println("command Checked!");
         Scanner tScanner = new Scanner(inputStream);
-        return tScanner.next();
+        return tScanner.nextLine();
     }
 
-    public static boolean commandSent = false;
-    public static void sendCommand(String command){
-        Main.command = command;
-        commandSent = true;
+    public static void sendCommand(String _command){
+
+        System.out.println(_command);
+        Main.command = _command;
+        Main.commandSent = true;
     }
 
     public static String command = new String();
@@ -71,7 +75,7 @@ public class Main {
 
 
             while(!someoneLost) {
-                String command = scanner.nextLine();
+                String command = readCommand();
 
                 //Show Player
                 if(command.contains("Show")){
