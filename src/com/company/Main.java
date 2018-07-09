@@ -11,9 +11,12 @@ import ItemsAndAmulets.Items.MysticHourglass;
 import Menu.WarMenu;
 import Player.Player;
 import Shops.Shop;
+import View.GraphicThread;
 import View.Graphics;
 import World.World;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
@@ -23,7 +26,23 @@ import java.util.Scanner;
 public class Main {
     public static boolean exitToMain = false;
     public static boolean someoneLost = false;
+    static InputStream inputStream = new ByteArrayInputStream("".getBytes());
 
+    public static String readCommand() {
+        while(!commandSent){}
+        commandSent = false;
+        inputStream = new ByteArrayInputStream(command.getBytes());
+        Scanner tScanner = new Scanner(inputStream);
+        return tScanner.next();
+    }
+
+    public static boolean commandSent = false;
+    public static void sendCommand(String command){
+        Main.command = command;
+        commandSent = true;
+    }
+
+    public static String command = new String();
     public static void war(World world, Player starter, Player other, Player sideName, int turn){
         Player enemySide = new Player();
 
@@ -217,7 +236,8 @@ public class Main {
 
             //--------------------------------------------------------------
 
-            Graphics.run(world);
+            Thread graphicThread = new GraphicThread(world);
+            graphicThread.start();
             war(world, starter, other, sideName, turn);
 
 

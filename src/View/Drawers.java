@@ -20,8 +20,8 @@ public class Drawers {
         Button singlePlayer = new Button("Single Player");
         singlePlayer.setScaleX(1);
         singlePlayer.setScaleY(1);
-        singlePlayer.setLayoutX(Graphics.Height / 2);
-        singlePlayer.setLayoutY(Graphics.Width / 2 - 50);
+        singlePlayer.setLayoutX(Graphics.Height / 2 + 30);
+        singlePlayer.setLayoutY(Graphics.Width / 2 - 250);
         singlePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -33,8 +33,8 @@ public class Drawers {
         Button settings = new Button("Settings");
         settings.setScaleX(1);
         settings.setScaleY(1);
-        settings.setLayoutX(Graphics.Height / 2);
-        settings.setLayoutY(Graphics.Width / 2);
+        settings.setLayoutX(Graphics.Height / 2 + 43);
+        settings.setLayoutY(Graphics.Width / 2 - 170);
         settings.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -45,8 +45,8 @@ public class Drawers {
         Button exit = new Button("Exit");
         exit.setScaleX(1);
         exit.setScaleY(1);
-        exit.setLayoutX(Graphics.Height / 2);
-        exit.setLayoutY(Graphics.Width / 2 + 50);
+        exit.setLayoutX(Graphics.Height / 2 + 60);
+        exit.setLayoutY(Graphics.Width / 2 - 70);
         exit.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -119,13 +119,18 @@ public class Drawers {
             text.setX(X);
             text.setY(Y + 15);
             Rectangle rectangle = new Rectangle(X, Y, Graphics.Width/3,25);
-            rectangle.setFill(Color.DARKRED);
+
+            if(world.thePlayer.hand.get(i) == selectedCard) {
+                rectangle.setFill(Color.DARKRED);
+            }else{
+                rectangle.setFill(Color.PALEVIOLETRED);
+            }
             Y += 28;
             int finalI = i;
             rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    rectangle.setFill(Color.WHITESMOKE);
+                    rectangle.setFill(Color.INDIANRED);
                     selectedCard = world.thePlayer.hand.get(finalI);
                 }
             });
@@ -135,14 +140,18 @@ public class Drawers {
     static void drawMyField(Group root, World world){
         int X = Graphics.Width / 3;
 
-        //add monsterfield
-        int[] monsterFieldIndex = new int[]{X + 5, X + 15, X + 25, X + 35, X + 45};
+        double monsterCardLenght = Graphics.Width / 3.0 / 6;
+
+        //add monsterField
+        int[] monsterFieldIndex = new int[]{X + 15, (int) (X + monsterCardLenght + 15)
+                , (int) (X + 2*monsterCardLenght + 15), (int) (X + 3 * monsterCardLenght + 15)
+                , (int) (X + 4 * monsterCardLenght + 15)};
         Player player = world.thePlayer;
         for(int i = 0; i < player.monsterField.size(); i++){
-            Text text = new Text(monsterFieldIndex[i], Graphics.Height - 150
+            Text text = new Text(monsterFieldIndex[i], Graphics.Height/2 + 50
                     , player.monsterField.get(i).name + "\nHP: " + player.monsterField.get(i).HP
                     + "\nAP: " + player.monsterField.get(i).AP);
-            Rectangle rectangle = new Rectangle(monsterFieldIndex[i], Graphics.Height - 150, 9, 10);
+            Rectangle rectangle = new Rectangle(monsterFieldIndex[i], Graphics.Height/2 + 30, monsterCardLenght - 5, 50);
             rectangle.setFill(Color.GREENYELLOW);
             int finalI = i;
             rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -155,17 +164,17 @@ public class Drawers {
             root.getChildren().addAll(rectangle, text);
         }
         for(int i = player.monsterField.size(); i < 5; i++){
-            Rectangle rectangle = new Rectangle(monsterFieldIndex[i], Graphics.Height - 150, 9, 10);
-            rectangle.setFill(Color.WHEAT);
+            Rectangle rectangle = new Rectangle(monsterFieldIndex[i], Graphics.Height/2 + 30, monsterCardLenght - 5, 50);
+            rectangle.setFill(Color.DARKGREEN);
             root.getChildren().addAll(rectangle);
         }
 
 
         //Add spellField
-        int[] spellFieldIndex = new int[]{X + 15, X + 25, X + 35};
+        int[] spellFieldIndex = new int[]{ (int) (X + monsterCardLenght + 15), (int) (X + 2*monsterCardLenght + 15), (int) (X + 3 * monsterCardLenght + 15)};
         for(int i = 0; i < player.spellField.size(); i++){
             Text text = new Text(spellFieldIndex[i], Graphics.Height - 100, player.spellField.get(i).name);
-            Rectangle rectangle = new Rectangle(spellFieldIndex[i], Graphics.Height - 100, 9, 10);
+            Rectangle rectangle = new Rectangle(spellFieldIndex[i],  Graphics.Height / 2 + 88, monsterCardLenght - 5, 50);
             rectangle.setFill(Color.GREEN);
             int finalI = i;
             rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -178,30 +187,32 @@ public class Drawers {
             root.getChildren().addAll(rectangle, text);
         }
         for(int i = player.spellField.size(); i < 3; i++){
-            Rectangle rectangle = new Rectangle(monsterFieldIndex[i], Graphics.Height - 100, 9, 10);
-            rectangle.setFill(Color.DARKGREEN);
+            Rectangle rectangle = new Rectangle(spellFieldIndex[i],  Graphics.Height / 2 + 88, monsterCardLenght - 5, 50);
+            rectangle.setFill(Color.DARKRED);
             root.getChildren().addAll(rectangle);
         }
 
         //Add Hero
-        Circle circle = new Circle(Graphics.Width / 2, Graphics.Height - 50, 50, Color.BLACK);
-        Text text = new Text(Graphics.Width / 2 + 55, Graphics.Height - 50
+        Circle circle = new Circle((int) (X + 2.5*monsterCardLenght + 15), Graphics.Height - 150, 30, Color.ORANGE);
+        Text text = new Text((int) (X + 2.5*monsterCardLenght + 15) + 30, Graphics.Height - 150
                 , "HP: " + player.Hero.HP + "/10000" + "\nMP: " + player.MP + "/" + player.MaxMP);
         root.getChildren().addAll(circle, text);
 
         //Add Deck and GraveYard
-        Rectangle deck = new Rectangle(X + 150, Graphics.Height - 60, 45, 55);
-        Text deckText = new Text(X + 150, Graphics.Height - 60, "" + player.deck.size());
+        Rectangle deck = new Rectangle(X + Graphics.Width/3 - 50, Graphics.Height - 150, 45, 55);
+        Text deckText = new Text(X + Graphics.Width/3 - 50 + monsterCardLenght / 2 - 10, Graphics.Height - 120, "" + player.deck.size());
+        deck.setFill(Color.BISQUE);
         root.getChildren().addAll(deck, deckText);
 
-        Rectangle graveYard = new Rectangle(X + 5, Graphics.Height - 60, 45, 55);
+        Rectangle graveYard = new Rectangle(X + 5, Graphics.Height - 150, 45, 55);
         graveYard.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 //TODO: need to do something
             }
         });
-        Text graveYardText = new Text(X + 5, Graphics.Height - 60, "GraveYard");
+        graveYard.setFill(Color.BISQUE);
+        Text graveYardText = new Text(X + 5, Graphics.Height - 120, "GraveYard");
         root.getChildren().addAll(graveYard, graveYardText);
 
     }
@@ -214,7 +225,7 @@ public class Drawers {
         //add showHand and showItem buttons
         Button showHand = new Button("Show Hand");
         showHand.setLayoutX(X + 10);
-        showHand.setLayoutY(Graphics.Height - 100);
+        showHand.setLayoutY(Graphics.Height - 120);
         showHand.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -224,8 +235,8 @@ public class Drawers {
         });
 
         Button showItem = new Button("Show Item");
-        showItem.setLayoutX(Graphics.Width - 100);
-        showItem.setLayoutY(Graphics.Height - 100);
+        showItem.setLayoutX(Graphics.Width - 120);
+        showItem.setLayoutY(Graphics.Height - 120);
         showItem.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -241,14 +252,15 @@ public class Drawers {
             drawHand(root, world);
             if(selectedCard != null){
                 Button playCard = new Button("Play Card");
-                playCard.setLayoutX(X + 100);
-                playCard.setLayoutY(Graphics.Height - 10);
+                playCard.setLayoutX(Graphics.Width - 120);
+                playCard.setLayoutY(Graphics.Height - 170);
                 playCard.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
                         //TODO:
                     }
                 });
+                root.getChildren().addAll(playCard);
             }
         }else if(warMenuMode == WarMenuModes.ShowItems){
             drawItem(root, world);
