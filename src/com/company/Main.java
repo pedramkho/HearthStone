@@ -152,7 +152,6 @@ public class Main {
         Player other = new Player();
 
         world.thePlayer.initializePlayer();
-        Graphics.run(world);
 
         for(int warNumber = 0; warNumber < 4; warNumber++) {
             world.thePlayer.preWaInitlize();
@@ -218,6 +217,7 @@ public class Main {
 
             //--------------------------------------------------------------
 
+            Graphics.run(world);
             war(world, starter, other, sideName, turn);
 
 

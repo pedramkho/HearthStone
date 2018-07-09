@@ -117,10 +117,10 @@ public class Drawers {
         for(int i = 0; i < world.thePlayer.hand.size(); i++){
             Text text = new Text(world.thePlayer.hand.get(i).name);
             text.setX(X);
-            text.setY(Y);
-            Rectangle rectangle = new Rectangle(X, Y, Graphics.Width,5);
+            text.setY(Y + 15);
+            Rectangle rectangle = new Rectangle(X, Y, Graphics.Width/3,25);
             rectangle.setFill(Color.DARKRED);
-            Y += 6;
+            Y += 28;
             int finalI = i;
             rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -190,7 +190,19 @@ public class Drawers {
         root.getChildren().addAll(circle, text);
 
         //Add Deck and GraveYard
+        Rectangle deck = new Rectangle(X + 150, Graphics.Height - 60, 45, 55);
+        Text deckText = new Text(X + 150, Graphics.Height - 60, "" + player.deck.size());
+        root.getChildren().addAll(deck, deckText);
 
+        Rectangle graveYard = new Rectangle(X + 5, Graphics.Height - 60, 45, 55);
+        graveYard.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                //TODO: need to do something
+            }
+        });
+        Text graveYardText = new Text(X + 5, Graphics.Height - 60, "GraveYard");
+        root.getChildren().addAll(graveYard, graveYardText);
 
     }
     static void drawEnemyField(Group root, World world){}
@@ -202,17 +214,18 @@ public class Drawers {
         //add showHand and showItem buttons
         Button showHand = new Button("Show Hand");
         showHand.setLayoutX(X + 10);
-        showHand.setLayoutY(Graphics.Height - 50);
+        showHand.setLayoutY(Graphics.Height - 100);
         showHand.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                System.out.println("Clicked");
                 warMenuMode = WarMenuModes.ShowHand;
             }
         });
 
         Button showItem = new Button("Show Item");
-        showItem.setLayoutX(X + 50);
-        showItem.setLayoutY(Graphics.Height - 50);
+        showItem.setLayoutX(Graphics.Width - 100);
+        showItem.setLayoutY(Graphics.Height - 100);
         showItem.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
