@@ -115,6 +115,7 @@ public class Drawers {
     static void drawHand(Group root, World world){
         int X = 2 * Graphics.Width / 3;
         int Y = 5;
+
         for(int i = 0; i < world.thePlayer.hand.size(); i++){
             Text text = new Text(world.thePlayer.hand.get(i).name);
             text.setX(X);
@@ -136,6 +137,19 @@ public class Drawers {
                 }
             });
             root.getChildren().addAll(rectangle, text);
+            if(selectedCard != null){
+                Button playCard = new Button("Play Card");
+                playCard.setLayoutX(Graphics.Width - 120);
+                playCard.setLayoutY(Graphics.Height - 170);
+                playCard.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Main.sendCommand("set " + world.thePlayer.hand.indexOf(selectedCard));
+                        selectedCard = null;
+                    }
+                });
+                root.getChildren().addAll(playCard);
+            }
         }
     }
     static void drawMyField(Group root, World world){
@@ -251,19 +265,6 @@ public class Drawers {
         //Add each mode options
         if(warMenuMode == WarMenuModes.ShowHand){
             drawHand(root, world);
-            if(selectedCard != null){
-                Button playCard = new Button("Play Card");
-                playCard.setLayoutX(Graphics.Width - 120);
-                playCard.setLayoutY(Graphics.Height - 170);
-                playCard.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        Main.sendCommand("set " + world.thePlayer.hand.indexOf(selectedCard) + "\n");
-                        selectedCard = null;
-                    }
-                });
-                root.getChildren().addAll(playCard);
-            }
         }else if(warMenuMode == WarMenuModes.ShowItems){
             drawItem(root, world);
         }else if(warMenuMode == WarMenuModes.CardMode){
@@ -275,7 +276,16 @@ public class Drawers {
         drawMyField(root, world);
         drawEnemyField(root, world);
     }
-    static void drawTextFieldInWar(Group root, World world){}
+    static void drawTextFieldInWar(Group root, World world){
+        if(selectedCard != null){
+            Text info = new Text(10, 15, ((Monster)selectedCard).description);
+            root.getChildren().addAll(info);
+        }
+
+        Text event = new Text(10, Graphics.Height/2 + 100, Main.again);
+        root.getChildren().addAll(event);
+
+    }
 
     public static void drawWar(Group root, World world){
         root.getChildren().clear();

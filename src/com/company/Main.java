@@ -2,48 +2,41 @@ package com.company;
 
 import AI.AI;
 import Cards.Card;
-import Cards.MonsterCard.Friendly.ElvenMonster.ElvenGuardsman;
-import Cards.MonsterCard.Monster;
-import Cards.MonsterCard.Type;
-import Inventory.Inventory;
 import ItemsAndAmulets.Item;
 import ItemsAndAmulets.Items.MysticHourglass;
 import Menu.WarMenu;
 import Player.Player;
 import Shops.Shop;
 import View.GraphicThread;
-import View.Graphics;
 import World.World;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
-
+import java.util.concurrent.Semaphore;
 
 
 public class Main {
     public static boolean exitToMain = false;
     public static boolean someoneLost = false;
-    public static boolean commandSent = false;
-    static InputStream inputStream = new ByteArrayInputStream("".getBytes());
 
+    static Semaphore lock = new Semaphore(0);
     public static String readCommand() {
-        while(!Main.commandSent){
+
+        try {
+            lock.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        Main.commandSent = false;
-        inputStream = new ByteArrayInputStream(command.getBytes());
-        System.out.println("command Checked!");
-        Scanner tScanner = new Scanner(inputStream);
-        return tScanner.nextLine();
+
+        return command;
     }
 
     public static void sendCommand(String _command){
 
-        System.out.println(_command);
         Main.command = _command;
-        Main.commandSent = true;
+        lock.release();
     }
 
     public static String command = new String();
@@ -170,6 +163,7 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+
         World world = new World();
         Player starter = new Player();
         Player other = new Player();
@@ -261,15 +255,15 @@ public class Main {
                 someoneLost = false;
             }
 
-            if(exitToMain){
+            if(
+                    exitToMain){
                 return;
             }
 
         }
         System.out.println("You Won :)");
 
-}
-
+    }
     //added
     public static void print(String output){
         Main.again = output;
