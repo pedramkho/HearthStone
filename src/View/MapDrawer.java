@@ -1,24 +1,27 @@
 package View;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
-import java.applet.Applet;
+import java.io.File;
 
-public class MapDrawer extends Application{
+public class MapDrawer{
 
-    public static void run(){launch();}
 
     static boolean[][] War = new boolean[100][100];
     static boolean[][] Shop = new boolean[100][100];
     public static boolean[][] IsNotPassAble = new boolean[100][100];
 
-    public static int viewRecWidth = 0;
-    public static int viewRecHeight = 0;
-    public static int imageRecWidth = 0;
-    public static int imageRecHeight = 0;
-    public static int imageX = 0;
-    public static int imageY = 0;
+    public static int viewRecWidth = 1200/2;
+    public static int viewRecHeight = 700/2;
+    public static int imageRecWidth = 2100;
+    public static int imageRecHeight = 2100;
+
+    public static int imageX = 700/4;
+    public static int imageY = 1200/4 - 150;
 
     public static void empty(String string, int range, int x, int y){
         if(string.equals("War")){
@@ -364,7 +367,7 @@ public class MapDrawer extends Application{
 
         for (int j = 33; j < 66; j++) {
             for (int i = 0; i < 100; i++) {
-                if (isNotPassAble[i + 100 * j] != 0) {
+                if (isNotPassAble[i + 100 * (j - 33)] != 0) {
                     IsNotPassAble[i][j] = true;
                 }
             }
@@ -408,17 +411,44 @@ public class MapDrawer extends Application{
 
         for (int j = 66; j < 100; j++) {
             for (int i = 0; i < 100; i++) {
-                if (isNotPassAble[i + 100 * j] != 0) {
+                if (isNotPassAble[i + 100 * (j - 66)] != 0) {
                     IsNotPassAble[i][j] = true;
                 }
             }
         }
     }
 
+    public static Image image = new Image(new File("Map.png").toURI().toString());
+    public static void drawMap(Group root){
+
+        root.getChildren().clear();
+
+        Rectangle imageRectangle = new Rectangle(imageX, imageY, 2100, 2100);
+        imageRectangle.setFill(new ImagePattern(image));
+        root.getChildren().addAll(imageRectangle);
+
+        Hero.drawHero(root);
 
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+        Rectangle upperBlack = new Rectangle(0, 0, Graphics.Width, Graphics.Height/4);
+        upperBlack.setFill(Color.BLACK);
+
+        Rectangle downBlack = new Rectangle(0, 700 - 700/4, Graphics.Width, Graphics.Height/4);
+        upperBlack.setFill(Color.BLACK);
+
+        Rectangle rightSideBlack = new Rectangle(0, 0, 1200/4, 700);
+        upperBlack.setFill(Color.BLACK);
+
+        Rectangle leftSideBlack = new Rectangle(1200 - 1200/4, 0, 1200, 700);
+        upperBlack.setFill(Color.BLACK);
+
+
+        root.getChildren().addAll(downBlack, leftSideBlack, rightSideBlack, upperBlack);
+
+        Hero.checkShop();
+        Hero.checkWar();
 
     }
+
+
 }

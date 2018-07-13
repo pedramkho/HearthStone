@@ -4,7 +4,6 @@ package View;
 import Cards.Card;
 import Cards.MonsterCard.Monster;
 import Cards.SpellCards.Spell;
-import Menu.WarMenu;
 import Player.Player;
 import World.World;
 import com.company.Main;
@@ -19,23 +18,20 @@ import javafx.scene.text.Text;
 
 public class Drawers {
     public static void drawStartMenu(Group root) {
+
         root.getChildren().clear();
         Button singlePlayer = new Button("Single Player");
-        singlePlayer.setScaleX(1);
-        singlePlayer.setScaleY(1);
         singlePlayer.setLayoutX(Graphics.Width / 2 - 50);
         singlePlayer.setLayoutY(Graphics.Height / 2 - 250);
         singlePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                //TODO:Change it to MAP
-                Graphics.page = Pages.War;
+                System.out.println("Clicked");
+                Graphics.page = Pages.Map;
             }
         });
 
         Button settings = new Button("Settings");
-        settings.setScaleX(1);
-        settings.setScaleY(1);
         settings.setLayoutX(Graphics.Width / 2 - 35);
         settings.setLayoutY(Graphics.Height / 2 - 170);
         settings.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -46,8 +42,6 @@ public class Drawers {
         });
 
         Button exit = new Button("Exit");
-        exit.setScaleX(1);
-        exit.setScaleY(1);
         exit.setLayoutX(Graphics.Width / 2 - 20);
         exit.setLayoutY(Graphics.Height / 2 - 70);
         exit.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -375,10 +369,11 @@ public class Drawers {
 
         //Add Hero
         Circle circle = new Circle((int) (X + 2.5 * monsterCardWidth + 15), shift + Graphics.Height - (Graphics.Height - 130), 30, Color.ORANGE);
+
         circle.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                selectedCard = new Card();
+                targetCard = new Monster();
             }
         });
         Text text = new Text((int) (X + 2.5 * monsterCardWidth + 15) + 30, shift + Graphics.Height - (Graphics.Height - 150) - 50

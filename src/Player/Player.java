@@ -67,7 +67,8 @@ public class Player {
     public void initializePlayer() {
         Main.again = ("Please enter your name : ");
         System.out.print(Main.again);
-        String name = Main.scanner.nextLine();
+        //TODO:
+        String name = "";//Main.scanner.nextLine();
         actorName = name;
         this.Hero.name = name;
         //add items to inventory

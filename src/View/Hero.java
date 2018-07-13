@@ -3,20 +3,30 @@ package View;
 import com.company.Main;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
-import java.util.Map;
 
 public class Hero {
 
-    static int movementSpeed = 2;
+    static int movementSpeed = 1;
 
 
-    static int centerX = 10;
-    static int centerY = 10;
+    static int centerX = 1200/4;
+    static int centerY = 700/4 - 100;
 
-    static int inViewX = 0;
-    static int inViewY = 0;
+    static int inViewX = centerX + MapDrawer.imageX - 1200*2/4;
+    static int inViewY = centerY + MapDrawer.imageY - 700*2/4;
+
+    static int inRealMapX = 0;
+    static int inRealMapY = 0;
+
+    static void calculateNodes(){
+        inViewX = centerX + MapDrawer.imageX - 1200*2/4;
+        inViewY = centerY + MapDrawer.imageY - 700*2/4;
+
+        inRealMapX = (centerX * 100) / MapDrawer.imageRecWidth;
+        inRealMapY = (centerY * 100) / MapDrawer.imageRecHeight;
+    }
 
     static int rectangleWidth = 10;
     static int rectangleHeight = 10;
@@ -34,20 +44,19 @@ public class Hero {
 
 
     public static void moveLeft(){
+        calculateNodes();
 
         lastDirection = Direction.Left;
-
-        if(!MapDrawer.IsNotPassAble[(centerX - 1 + MapDrawer.imageRecWidth)% MapDrawer.imageRecWidth][centerY]) {
-            if (inViewX < MapDrawer.viewRecWidth / 2 && MapDrawer.viewRecWidth / 2 < inViewX
-                    && inViewY < MapDrawer.viewRecHeight / 2 && MapDrawer.viewRecHeight / 2 < inViewY) {
+        if(!MapDrawer.IsNotPassAble[(inRealMapX - 1 + 100)% 100][inRealMapY]) {
+            if (inViewX < MapDrawer.viewRecWidth / 2 && -MapDrawer.viewRecWidth / 2 < inViewX
+                    && inViewY < MapDrawer.viewRecHeight / 2 && -MapDrawer.viewRecHeight / 2 < inViewY) {
                 centerX -= movementSpeed;
                 inViewX -= movementSpeed;
             } else {
 
-                if ((MapDrawer.imageX) * (MapDrawer.imageX) < ((Graphics.Width - MapDrawer.viewRecWidth) / 2) * ((Graphics.Width - MapDrawer.viewRecWidth) / 2)
-                        && (MapDrawer.imageY) * (MapDrawer.imageY) < ((Graphics.Height - MapDrawer.viewRecHeight) / 2) * ((Graphics.Height - MapDrawer.viewRecHeight) / 2)) {
+                if ((MapDrawer.imageX) * (MapDrawer.imageX) < (1200/4) * (1200/4)
+                        && (MapDrawer.imageY) * (MapDrawer.imageY) < (700/4) * (700/4)) {
                     MapDrawer.imageX += movementSpeed;
-                    centerX -= movementSpeed;
                 }
             }
         }
@@ -55,55 +64,57 @@ public class Hero {
 
     }
     public static void moveRight() {
+        calculateNodes();
 
         lastDirection = Direction.Right;
-        if(!MapDrawer.IsNotPassAble[(centerX + 1 + MapDrawer.imageRecWidth)% MapDrawer.imageRecWidth][centerY]) {
-            if (inViewX < MapDrawer.viewRecWidth / 2 && MapDrawer.viewRecWidth / 2 < inViewX
-                    && inViewY < MapDrawer.viewRecHeight / 2 && MapDrawer.viewRecHeight / 2 < inViewY) {
+        if(!MapDrawer.IsNotPassAble[(inRealMapX + 1 + 100)% 100][inRealMapY]) {
+            if (inViewX < MapDrawer.viewRecWidth / 2 && -MapDrawer.viewRecWidth / 2 < inViewX
+                    && inViewY < MapDrawer.viewRecHeight / 2 && -MapDrawer.viewRecHeight / 2 < inViewY) {
                 centerX += movementSpeed;
                 inViewX += movementSpeed;
             } else {
 
-                if ((MapDrawer.imageX) * (MapDrawer.imageX) < ((Graphics.Width - MapDrawer.viewRecWidth) / 2) * ((Graphics.Width - MapDrawer.viewRecWidth) / 2)
-                        && (MapDrawer.imageY) * (MapDrawer.imageY) < ((Graphics.Height - MapDrawer.viewRecHeight) / 2) * ((Graphics.Height - MapDrawer.viewRecHeight) / 2)) {
+                if ((MapDrawer.imageX) * (MapDrawer.imageX) < (1200/4) * (1200/4)
+                        && (MapDrawer.imageY) * (MapDrawer.imageY) < (700/4) * (700/4)) {
                     MapDrawer.imageX -= movementSpeed;
-                    centerX += movementSpeed;
                 }
 
             }
         }
     }
     public static void moveUp(){
+        calculateNodes();
+        //centerY -= movementSpeed;
         lastDirection = Direction.Up;
-        if(!MapDrawer.IsNotPassAble[centerX][(centerY - 1 + MapDrawer.imageRecHeight)% MapDrawer.imageRecHeight]) {
-            if (inViewX < MapDrawer.viewRecWidth / 2 && MapDrawer.viewRecWidth / 2 < inViewX
-                    && inViewY < MapDrawer.viewRecHeight / 2 && MapDrawer.viewRecHeight / 2 < inViewY) {
+        if(!MapDrawer.IsNotPassAble[inRealMapX][(inRealMapY - 1 + 100)% 100]) {
+            if (inViewX < MapDrawer.viewRecWidth / 2 && -MapDrawer.viewRecWidth / 2 < inViewX
+                    && inViewY < MapDrawer.viewRecHeight / 2 && -MapDrawer.viewRecHeight / 2 < inViewY) {
                 centerY -= movementSpeed;
                 inViewY -= movementSpeed;
             } else {
 
-                if ((MapDrawer.imageX) * (MapDrawer.imageX) < ((Graphics.Width - MapDrawer.viewRecWidth) / 2) * ((Graphics.Width - MapDrawer.viewRecWidth) / 2)
-                        && (MapDrawer.imageY) * (MapDrawer.imageY) < ((Graphics.Height - MapDrawer.viewRecHeight) / 2) * ((Graphics.Height - MapDrawer.viewRecHeight) / 2)) {
+                if ((MapDrawer.imageX) * (MapDrawer.imageX) < (1200/4) * (1200/4)
+                        && (MapDrawer.imageY) * (MapDrawer.imageY) < (700/4) * (700/4)) {
                     MapDrawer.imageY += movementSpeed;
-                    centerY -= movementSpeed;
                 }
 
             }
         }
     }
     public static void moveDown(){
+        calculateNodes();
+
         lastDirection = Direction.Down;
-        if(!MapDrawer.IsNotPassAble[centerX][(centerY + 1 + MapDrawer.imageRecHeight)% MapDrawer.imageRecHeight]) {
-            if (inViewX < MapDrawer.viewRecWidth / 2 && MapDrawer.viewRecWidth / 2 < inViewX
-                    && inViewY < MapDrawer.viewRecHeight / 2 && MapDrawer.viewRecHeight / 2 < inViewY) {
+        if(!MapDrawer.IsNotPassAble[inRealMapX][(inRealMapY + 1 + 100)% 100]) {
+            if (inViewX < MapDrawer.viewRecWidth / 2 && -MapDrawer.viewRecWidth / 2 < inViewX
+                    && inViewY < MapDrawer.viewRecHeight / 2 && -MapDrawer.viewRecHeight / 2 < inViewY) {
                 centerY += movementSpeed;
                 inViewY += movementSpeed;
             } else {
 
-                if ((MapDrawer.imageX) * (MapDrawer.imageX) < ((Graphics.Width - MapDrawer.viewRecWidth) / 2) * ((Graphics.Width - MapDrawer.viewRecWidth) / 2)
-                        && (MapDrawer.imageY) * (MapDrawer.imageY) < ((Graphics.Height - MapDrawer.viewRecHeight) / 2) * ((Graphics.Height - MapDrawer.viewRecHeight) / 2)) {
+                if ((MapDrawer.imageX) * (MapDrawer.imageX) < (1200/4) * (1200/4)
+                        && (MapDrawer.imageY) * (MapDrawer.imageY) < (700/4) * (700/4)) {
                     MapDrawer.imageY -= movementSpeed;
-                    centerY += movementSpeed;
                 }
 
             }
@@ -111,13 +122,14 @@ public class Hero {
     }
 
     public static void drawHero(Group root){
-        Rectangle rectangle = new Rectangle(X_Calculator(), Y_Calculator(), rectangleWidth, rectangleHeight);
+        Rectangle rectangle = new Rectangle(MapDrawer.imageX + X_Calculator(),MapDrawer.imageY + Y_Calculator(), rectangleWidth, rectangleHeight);
+        rectangle.setFill(Color.RED);
         root.getChildren().addAll(rectangle);
     }
 
     public static void checkWar(){
-        int[] X = {centerX - rectangleWidth/2, centerX + rectangleWidth/2};
-        int[] Y = {centerY - rectangleHeight/2, centerY + rectangleHeight/2};
+        int[] X = {((centerX - rectangleWidth/2)*100/MapDrawer.imageRecWidth + 100) % 100, ((centerX + rectangleWidth/2)*100/MapDrawer.imageRecWidth + 100) % 100};
+        int[] Y = {((centerY - rectangleHeight/2)*100/MapDrawer.imageRecWidth + 100) % 100, ((centerY + rectangleHeight/2)*100/MapDrawer.imageRecWidth + 100) % 100};
         if(MapDrawer.War[X[0]][Y[0]] || MapDrawer.War[X[0]][Y[1]]
                 || MapDrawer.War[X[1]][Y[0]] || MapDrawer.War[X[1]][Y[1]]){
             Graphics.page = Pages.War;
@@ -125,15 +137,15 @@ public class Hero {
                 //TODO: add command
                 Main.sendCommand("");
             }
-            MapDrawer.empty("War", 4, centerX, centerY);
+            MapDrawer.empty("War", 4, centerX*100/2100, centerY*100/2100);
             //TODO: add points
             MapDrawer.empty("isNotPassAble", 2, 0, 0);
         }
     }
     public static void checkShop(){
 
-        int[] X = {centerX - rectangleWidth/2, centerX + rectangleWidth/2};
-        int[] Y = {centerY - rectangleHeight/2, centerY + rectangleHeight/2};
+        int[] X = {((centerX - rectangleWidth/2)*100/MapDrawer.imageRecWidth + 100) % 100, ((centerX + rectangleWidth/2)*1000/MapDrawer.imageRecWidth + 100) % 100};
+        int[] Y = {((centerY - rectangleHeight/2)*100/MapDrawer.imageRecWidth + 100) % 100, ((centerY + rectangleHeight/2)*1000/MapDrawer.imageRecWidth + 100) % 100};
         if(MapDrawer.Shop[X[0]][Y[0]] || MapDrawer.Shop[X[0]][Y[1]]
                 || MapDrawer.Shop[X[1]][Y[0]] || MapDrawer.Shop[X[1]][Y[1]]){
             Graphics.page = Pages.Shop;
