@@ -161,6 +161,7 @@ public class Main {
 
     }
 
+    public static int warNumber = 0;
     public static String again;
     public static Scanner scanner = new Scanner(System.in);
 
@@ -173,7 +174,7 @@ public class Main {
         world.thePlayer.initializePlayer();
         Thread graphicThread = new GraphicThread(world);
         graphicThread.start();
-        for(int warNumber = 0; warNumber < 4; warNumber++) {
+        for(warNumber = 0; warNumber < 4; warNumber++) {
             world.thePlayer.preWaInitlize();
             int turn = 1;
             switch (warNumber){
