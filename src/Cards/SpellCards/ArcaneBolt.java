@@ -5,6 +5,7 @@ import Player.Player;
 public class ArcaneBolt extends Spell {
 
     public ArcaneBolt() {
+        super.targetIsFriendly = false;
         super.name = "Arcane Bolt";
         super.MPCost = 5;
         super.type = cardType.Instant;

@@ -83,7 +83,7 @@ public abstract class WarMenu {
                     monster.haveSpell = false;
                     //TODO: write Spell info
                     System.out.println("'" +monster.name + "' :");
-                    System.out.println("info: " + monster.description);
+                    System.out.println("info: " + monster.spellDetails);
 
                     String commandInSpellCasting = Main.readCommand();
                     System.out.println("List of Targets:");
@@ -467,8 +467,8 @@ public abstract class WarMenu {
         Player sideName = world.thePlayer;
         Player enemySide = world.theEnemy;
         Player player = world.thePlayer;
-        Player loserSide = null;
-        Player winnerSide = null;
+        Player loserSide = world.thePlayer;
+        Player winnerSide = world.theEnemy;
         if(sideName.Hero.deathCheck()){
             loserSide = sideName;
             winnerSide = enemySide;

@@ -5,6 +5,7 @@ import Player.Player;
 public class ThrowingKnives extends Spell {
 
     public ThrowingKnives() {
+        super.targetIsFriendly = false;
         super.name = "Throwing Knives";
         super.MPCost = 3;
         super.type = cardType.Instant;

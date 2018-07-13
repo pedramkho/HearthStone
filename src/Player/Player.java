@@ -69,6 +69,7 @@ public class Player {
         System.out.print(Main.again);
         String name = Main.scanner.nextLine();
         actorName = name;
+        this.Hero.name = name;
         //add items to inventory
         inventory.removeOrAddToItems(new MysticHourglass(),3);
         inventory.removeOrAddToItems(new SmallHPPotion(),2);
@@ -186,6 +187,9 @@ public class Player {
     //Search functions:
     //TODO: We should add a way to find choosen monster in world
     public Monster getSearchedMonster(int index){
+        if(index == -1){
+            return this.Hero;
+        }
         return this.monsterField.get(index);
     }
     public Card getSearchedCard(int index){
@@ -244,10 +248,10 @@ public class Player {
                 World.spellCasting(card, this, this.enemy);
 
             }else{
-                System.out.println("not enough room for card");
+                Main.print("not enough room for card");
             }
         }else{
-            System.out.println("not enough MP");
+            Main.print("not enough MP");
         }
     }
     public Card moveCardFromDeckToHand(){

@@ -5,6 +5,7 @@ import Player.Player;
 public class ReapersScythe extends Spell {
 
     public ReapersScythe() {
+        super.targetIsFriendly = false;
         super.name = "Reaper's Scythe";
         super.MPCost = 4;
         super.type = cardType.Instant;

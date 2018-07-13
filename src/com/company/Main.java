@@ -21,7 +21,9 @@ public class Main {
     public static boolean exitToMain = false;
     public static boolean someoneLost = false;
 
+    static String Command = new String();
     static Semaphore lock = new Semaphore(0);
+
     public static String readCommand() {
 
         try {
@@ -30,16 +32,15 @@ public class Main {
             e.printStackTrace();
         }
 
-        return command;
+        System.out.println("Read Command: " + Command);
+        return Command;
     }
-
     public static void sendCommand(String _command){
-
-        Main.command = _command;
+        System.out.println("Sent Command: " + _command);
+        Main.Command = _command;
         lock.release();
     }
 
-    public static String command = new String();
     public static void war(World world, Player starter, Player other, Player sideName, int turn){
         Player enemySide = new Player();
 
@@ -137,6 +138,7 @@ public class Main {
                 //Exit:
                 if (command.contains("Exit")) {
                     print(sideName.actorName + " quit!");
+                    someoneLost = true;
                     exitToMain = true;
                     return;
                 }
@@ -169,7 +171,8 @@ public class Main {
         Player other = new Player();
 
         world.thePlayer.initializePlayer();
-
+        Thread graphicThread = new GraphicThread(world);
+        graphicThread.start();
         for(int warNumber = 0; warNumber < 4; warNumber++) {
             world.thePlayer.preWaInitlize();
             int turn = 1;
@@ -234,8 +237,7 @@ public class Main {
 
             //--------------------------------------------------------------
 
-            Thread graphicThread = new GraphicThread(world);
-            graphicThread.start();
+
             war(world, starter, other, sideName, turn);
 
 
@@ -247,21 +249,20 @@ public class Main {
                         warNumber--;
                         someoneLost = false;
                     }else{
-                        System.out.println("You Lost!");
+                        print("You Lost!");
                         return;
                     }
                 }
-                System.out.println("You won the battle against \"" + world.theEnemy.actorName + "\"!");
+                print("You won the battle against \"" + world.theEnemy.actorName + "\"!");
                 someoneLost = false;
             }
 
-            if(
-                    exitToMain){
+            if(exitToMain){
                 return;
             }
 
         }
-        System.out.println("You Won :)");
+        print("You Won :)");
 
     }
     //added

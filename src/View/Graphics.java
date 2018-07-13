@@ -14,7 +14,7 @@ import javafx.util.Duration;
 
 public class Graphics extends Application {
     public static int Height = 700;
-    public static int Width = 900;
+    public static int Width = 1200;
     public static Pages page = Pages.StartMenu;
     Group root = new Group();
     static World world;
@@ -31,6 +31,8 @@ public class Graphics extends Application {
         primaryStage.setTitle("HearthStone");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(30), new EventHandler<ActionEvent>() {
             @Override

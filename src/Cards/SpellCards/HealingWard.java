@@ -6,6 +6,7 @@ import Player.Player;
 public class HealingWard extends Spell {
 
     public HealingWard() {
+        super.targetIsFriendly = false;
         super.name = "Healing Ward";
         super.MPCost = 5;
         super.type = cardType.Continuous;

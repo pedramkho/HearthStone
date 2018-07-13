@@ -23,7 +23,7 @@ public abstract class AI {
     }
 
     static int getBestTarget(Player enemySide, Monster attacker){
-        if(enemySide.monsterField.size() > 0) {
+        if(enemySide.monsterField.size() > 1) {
             Monster targetMonster = enemySide.monsterField.get(0);
             int count = 0;
             int target = 0;
@@ -43,8 +43,8 @@ public abstract class AI {
     }
 
     static void useHand(Player sideName, Player enemyside){
-        if(sideName.hand.size() > 0) {
-            sideName.moveCardFromHandToField(0);
+        for(int i = 0; i < sideName.hand.size(); i++) {
+            sideName.moveCardFromHandToField(i);
         }
     }
 

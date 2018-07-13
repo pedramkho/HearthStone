@@ -12,6 +12,8 @@ public class Spell extends Card {
         super.description = "";
     }
 
+
+    public boolean targetIsFriendly = false;
     public void action(Player player, Player enemy, int target){}
     public void removeSpell(Player player){
         auraRemove(player);

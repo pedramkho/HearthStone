@@ -5,6 +5,7 @@ import Player.Player;
 public class BloodFeast extends Spell {
 
     public BloodFeast() {
+        super.targetIsFriendly = false;
         super.type = cardType.Instant;
         super.MPCost = 4;
         super.name = "Blood Feast";
