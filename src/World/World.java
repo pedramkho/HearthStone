@@ -6,7 +6,10 @@ import Cards.SpellCards.Spell;
 import Cards.SpellCards.cardType;
 import Player.Player;
 
-public class World {
+import java.io.Serializable;
+
+public class World implements Serializable{
+    public String command = "";
     public Player thePlayer = new Player();
     public Player theEnemy = new Player();
     public World(){

@@ -2,7 +2,9 @@ package ItemsAndAmulets.Items;
 
 import ItemsAndAmulets.Item;
 
-public class MysticHourglass extends Item {
+import java.io.Serializable;
+
+public class MysticHourglass extends Item implements Serializable {
     public MysticHourglass(){
         super.name = "Mystic Hourglass";
     }

@@ -2,6 +2,7 @@ package View;
 
 import Player.Player;
 import World.World;
+import com.company.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -25,11 +26,16 @@ public class Graphics extends Application {
         launch();
     }
 
+    public static void updateWorld(){
+        world = Main.world;
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         MapDrawer.initialize();
+
 
         Scene scene = new Scene(root);
         primaryStage.setHeight(Height);
@@ -59,13 +65,14 @@ public class Graphics extends Application {
             }
         });
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(250), new EventHandler<ActionEvent>() {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(400), new EventHandler<ActionEvent>() {
+
             @Override
             public void handle(ActionEvent event) {
                 if(page == Pages.StartMenu){
                     Drawers.drawStartMenu(root);
                 }else if(page == Pages.War){
-                    Drawers.drawWar(root, world);
+                    Drawers.drawWar(root, Main.world);
                 }else if(page == Pages.Deck){
 
                 }else if(page == Pages.Map){

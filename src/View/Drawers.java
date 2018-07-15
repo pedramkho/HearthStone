@@ -413,6 +413,7 @@ public class Drawers {
         showHand.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                System.out.println("Clicked");
                 warMenuMode = WarMenuModes.ShowHand;
             }
         });

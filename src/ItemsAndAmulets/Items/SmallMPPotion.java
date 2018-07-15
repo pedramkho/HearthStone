@@ -3,7 +3,9 @@ package ItemsAndAmulets.Items;
 import ItemsAndAmulets.Item;
 import Player.Player;
 
-public class SmallMPPotion extends Item {
+import java.io.Serializable;
+
+public class SmallMPPotion extends Item implements Serializable {
     public SmallMPPotion(){
         super.itemCost = 1000;
         super.name = "Small MP Potion";

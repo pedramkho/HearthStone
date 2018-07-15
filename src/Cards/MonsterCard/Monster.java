@@ -4,9 +4,10 @@ import Cards.Card;
 import Cards.SpellCards.Spell;
 import Player.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Monster extends Card{
+public class Monster extends Card implements Serializable{
 
 
     //TODO: default HP and AP should be added

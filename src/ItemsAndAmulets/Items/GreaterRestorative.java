@@ -3,7 +3,9 @@ package ItemsAndAmulets.Items;
 import ItemsAndAmulets.Item;
 import Player.Player;
 
-public class GreaterRestorative extends Item {
+import java.io.Serializable;
+
+public class GreaterRestorative extends Item implements Serializable {
     public GreaterRestorative(){
         super.itemCost = 4000;
         super.name = "Greater Restorative";

@@ -2,9 +2,10 @@ package ItemsAndAmulets;
 
 import Player.Player;
 
+import java.io.Serializable;
 import java.lang.reflect.Constructor;
 
-public class Amulet {
+public class Amulet implements Serializable {
     public int amuletCost = 0;
     public String name = "";
     public void action(Player player){}

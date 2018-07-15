@@ -1,8 +1,9 @@
 package Cards;
 
+import java.io.Serializable;
 import java.lang.reflect.Constructor;
 
-public class Card {
+public class Card implements Serializable {
     //TODO: We should add all cards name
     public int MPCost;
     public String name;

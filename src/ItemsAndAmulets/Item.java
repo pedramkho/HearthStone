@@ -3,9 +3,10 @@ package ItemsAndAmulets;
 import Cards.Card;
 import Player.Player;
 
+import java.io.Serializable;
 import java.lang.reflect.Constructor;
 
-public class Item {
+public class Item implements Serializable {
     public int itemCost = 0;
     public String name = "";
     public void action(Player player){}

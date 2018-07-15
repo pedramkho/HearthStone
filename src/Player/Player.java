@@ -23,11 +23,12 @@ import Menu.WarMenu;
 import World.World;
 import com.company.Main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-public class Player {
+public class Player implements Serializable{
     public double demonKingsCrownEffect = 1;
     public int currentMaxMP = 1;
     public Player(){

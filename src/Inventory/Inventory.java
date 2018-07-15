@@ -8,9 +8,10 @@ import Shops.CardShop;
 import Shops.ItemShop;
 import com.company.Main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventory {
+public class Inventory implements Serializable {
     public ArrayList<Card> deck = new ArrayList<>();
     public ArrayList<Card> cards = new ArrayList<>();
     public ArrayList<Item> items = new ArrayList<>();

@@ -8,26 +8,45 @@ import Menu.WarMenu;
 import Player.Player;
 import Shops.Shop;
 import View.GraphicThread;
+import View.Graphics;
 import World.World;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.Semaphore;
 
 
 public class Main {
+    public static final boolean thisIsServer = false;
+    static int port = 4444;
+
+
+
+    public static GameMode gameMode = GameMode.MultiPlayer;
+
     public static boolean exitToMain = false;
     public static boolean someoneLost = false;
 
+    //Commands
     static String Command = new String();
-    static Semaphore lock = new Semaphore(0);
+
+    //Locks:
+    static Semaphore GameModeLock = new Semaphore(0);
+    static Semaphore messageLock = new Semaphore(0);
+    public static Semaphore firstServerLock = new Semaphore(0);
+    public static Semaphore secondServerLock = new Semaphore(0);
+    public static Semaphore OnlineGameStart = new Semaphore(0);
+    public static Semaphore commandInProgress = new Semaphore(0);
+
 
     public static String readCommand() {
 
         try {
-            lock.acquire();
+            messageLock.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -38,13 +57,15 @@ public class Main {
     public static void sendCommand(String _command){
         System.out.println("Sent Command: " + _command);
         Main.Command = _command;
-        lock.release();
+        messageLock.release();
     }
 
     public static void war(World world, Player starter, Player other, Player sideName, int turn){
         Player enemySide = new Player();
 
         while (!someoneLost) {
+
+
             //this change turn
             if (sideName == starter) {
                 sideName = other;
@@ -52,23 +73,22 @@ public class Main {
                 sideName = starter;
             }
 
-            if (sideName == starter) {
-                enemySide = other;
-            } else {
-                enemySide = starter;
-            }
+
+            playerOnTurn = sideName;
 
             WarMenu.changeTurn(starter, other, sideName, enemySide);
 
             WarMenu.preTurn(sideName, enemySide, turn);
 
-            if(sideName == world.theEnemy) {
+            if(sideName == world.theEnemy && !thisIsServer) {
                 AI.run(sideName, enemySide);
                 continue;
             }
 
 
             while(!someoneLost) {
+
+
                 String command = readCommand();
 
                 //Show Player
@@ -150,6 +170,12 @@ public class Main {
                     print(card.cardInfo());
                 }
 
+                if(thisIsServer) {
+                    Main.world = world;
+                }
+                Main.commandInProgress.release();
+
+
             }
 
             turn++;
@@ -165,105 +191,151 @@ public class Main {
     public static String again;
     public static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
 
-        World world = new World();
-        Player starter = new Player();
-        Player other = new Player();
-
-        world.thePlayer.initializePlayer();
-        Thread graphicThread = new GraphicThread(world);
-        graphicThread.start();
-        for(warNumber = 0; warNumber < 4; warNumber++) {
-            world.thePlayer.preWaInitlize();
-            int turn = 1;
-            switch (warNumber){
-                case 0:
-                    world.theEnemy.initializeGoblinChieftain();
-                    break;
-                case 1:
-                    world.thePlayer.money += 10000;
-                    world.theEnemy.initializeVampireLord();
-                    break;
-                case 2:
-                    world.thePlayer.money += 10000;
-                    world.theEnemy.initializeOrgeWarLord();
-                    break;
-                case 3:
-                    world.thePlayer.money += 10000;
-                    world.theEnemy.initializeLucifer();
-            }
+    public static World world = new World();
+    public static Player starter = new Player();
+    public static Player other = new Player();
+    public static Player playerOnTurn = new Player();
 
 
-            if(warNumber > 0){
-                while(true){
-                    String command = scanner.nextLine();
-                    if(command.contains("Shop")){
-                        Shop.menu(world.thePlayer);
-                    }else if(command.contains("inventory")){
-                        world.thePlayer.inventory.inventory();
-                    }else if(command.contains("Next")){
-                        break;
-                    }else{
-                        print("invalid input!");
-                    }
-                }
-            }
+    public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
 
 
-            //a random starter here
-            Random random = new Random();
-            if (random.nextInt() % 2 == 0) {
-                starter = world.theEnemy;
-                other = world.thePlayer;
-            }else{
-                starter = world.thePlayer;
-                other = world.theEnemy;
-            }
+        if(thisIsServer){
+            //This is server
 
-            Player sideName = starter;
+            Thread firstPlayer = new FirstServer();
+            Thread secondPlayer = new SecondServer();
+            firstPlayer.start();
+            secondPlayer.start();
 
-            //--------------------------------------------------------------
+            firstServerLock.acquire();
+            secondServerLock.acquire();
+            OnlineGameStart.release();
+            OnlineGameStart.release();
 
-            System.out.println("Battle against " + world.theEnemy.actorName
-                    + " started!");
-
-            System.out.println(sideName.actorName + " starts the battle.");
-
-            for(int i = 0; i < 5; i++){
+            for (int i = 0; i < 5; i++) {
                 world.theEnemy.moveCardFromDeckToHand();
                 world.thePlayer.moveCardFromDeckToHand();
             }
-            print("Player drew " + sideName.handToString());
+            System.out.println("Game Started");
+            war(world, starter, other, other, 1);
+        }else {
+            Thread graphicThread = new GraphicThread(world);
+            graphicThread.start();
 
-            //--------------------------------------------------------------
+//TODO: release lock
+            //GameModeLock.acquire();
+            if(gameMode == GameMode.SinglePlayer) {
+
+                world.thePlayer.initializePlayer();
+                for (warNumber = 0; warNumber < 4; warNumber++) {
+                    world.thePlayer.preWaInitlize();
+                    int turn = 1;
+                    switch (warNumber) {
+                        case 0:
+                            world.theEnemy.initializeGoblinChieftain();
+                            break;
+                        case 1:
+                            world.thePlayer.money += 10000;
+                            world.theEnemy.initializeVampireLord();
+                            break;
+                        case 2:
+                            world.thePlayer.money += 10000;
+                            world.theEnemy.initializeOrgeWarLord();
+                            break;
+                        case 3:
+                            world.thePlayer.money += 10000;
+                            world.theEnemy.initializeLucifer();
+                    }
 
 
-            war(world, starter, other, sideName, turn);
+                    if (warNumber > 0) {
+                        while (true) {
+                            String command = scanner.nextLine();
+                            if (command.contains("Shop")) {
+                                Shop.menu(world.thePlayer);
+                            } else if (command.contains("inventory")) {
+                                world.thePlayer.inventory.inventory();
+                            } else if (command.contains("Next")) {
+                                break;
+                            } else {
+                                print("invalid input!");
+                            }
+                        }
+                    }
 
 
-            if(someoneLost){
-                if(WarMenu.isGameFinished(world)){
-                    Item item = null;
-                    if(world.thePlayer.inventory.items.contains(new MysticHourglass())){
-                        world.thePlayer.inventory.items.remove(new MysticHourglass());
-                        warNumber--;
+                    //a random starter here
+                    Random random = new Random();
+                    if (random.nextInt() % 2 == 0) {
+                        starter = world.theEnemy;
+                        other = world.thePlayer;
+                    } else {
+                        starter = world.thePlayer;
+                        other = world.theEnemy;
+                    }
+
+                    Player sideName = starter;
+
+                    //--------------------------------------------------------------
+
+                    System.out.println("Battle against " + world.theEnemy.actorName
+                            + " started!");
+
+                    System.out.println(sideName.actorName + " starts the battle.");
+
+                    for (int i = 0; i < 5; i++) {
+                        world.theEnemy.moveCardFromDeckToHand();
+                        world.thePlayer.moveCardFromDeckToHand();
+                    }
+                    print("Player drew " + sideName.handToString());
+
+                    //--------------------------------------------------------------
+
+
+                    war(world, starter, other, sideName, turn);
+
+
+                    if (someoneLost) {
+                        if (WarMenu.isGameFinished(world)) {
+                            Item item = null;
+                            if (world.thePlayer.inventory.items.contains(new MysticHourglass())) {
+                                world.thePlayer.inventory.items.remove(new MysticHourglass());
+                                warNumber--;
+                                someoneLost = false;
+                            } else {
+                                print("You Lost!");
+                                return;
+                            }
+                        }
+                        print("You won the battle against \"" + world.theEnemy.actorName + "\"!");
                         someoneLost = false;
-                    }else{
-                        print("You Lost!");
+                    }
+
+                    if (exitToMain) {
                         return;
                     }
+
                 }
-                print("You won the battle against \"" + world.theEnemy.actorName + "\"!");
-                someoneLost = false;
+                print("You Won :)");
+            }else{
+                //this is multiPlayer mode
+
+                Socket socket = new Socket("localhost", port);
+                ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
+                ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
+
+                while(true){
+                    Main.world = (World) is.readObject();
+                    world.command = readCommand();
+                    os.writeObject(world);
+                }
             }
 
-            if(exitToMain){
-                return;
-            }
+
 
         }
-        print("You Won :)");
 
     }
     //added

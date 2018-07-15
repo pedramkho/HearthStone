@@ -3,7 +3,9 @@ package Cards.SpellCards;
 import Cards.Card;
 import Player.Player;
 
-public class Spell extends Card {
+import java.io.Serializable;
+
+public class Spell extends Card implements Serializable {
     public String cardTypeInString = "";
     public cardType type = cardType.Instant;
     public String details;
