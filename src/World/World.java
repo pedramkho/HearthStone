@@ -9,9 +9,13 @@ import Player.Player;
 import java.io.Serializable;
 
 public class World implements Serializable{
+    public String printCommand = "";
     public String command = "";
+    public String chatString = "";
+
     public Player thePlayer = new Player();
     public Player theEnemy = new Player();
+
     public World(){
         thePlayer.actorName = "Player";
         thePlayer.post = "Player";

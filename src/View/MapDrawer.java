@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.io.File;
@@ -55,6 +56,8 @@ public class MapDrawer{
         initialize_War();
         initialize_Shop();
         initialize_IsNotPassAble();
+        miniMap = new Rectangle(10, 10, miniMapRec_Width, miniMapRec_Height);
+        miniMap.setFill(Color.GHOSTWHITE);
     }
 
     public static void initialize_War() {
@@ -418,6 +421,36 @@ public class MapDrawer{
         }
     }
 
+    static Rectangle miniMap = new Rectangle();
+    static int miniMapRec_Width = 250;
+    static int miniMapRec_Height = 200;
+
+    static void drawMiniMap(Group root){
+        root.getChildren().add(miniMap);
+        for(int i = 0; i < 100; i++){
+            for(int j = 0; j < 100; j++){
+                if(War[i][j]){
+                    Rectangle rectangle = new Rectangle(i*miniMapRec_Width/100 + 10, j*miniMapRec_Height/100 + 10, miniMapRec_Width / 100 + 0.2, miniMapRec_Height / 100 + 0.2);
+                    rectangle.setFill(Color.RED);
+                    root.getChildren().add(rectangle);
+                }
+                if(Shop[i][j]){
+                    Rectangle rectangle = new Rectangle(i*miniMapRec_Width/100 + 10, j*miniMapRec_Height/100 + 10, miniMapRec_Width / 100 + 0.2, miniMapRec_Height / 100 + 0.2);
+                    rectangle.setFill(Color.ORANGE);
+                    root.getChildren().add(rectangle);
+                }
+                if(IsNotPassAble[i][j]){
+                    Rectangle rectangle = new Rectangle(i*miniMapRec_Width/100 + 10, j*miniMapRec_Height/100 + 10, miniMapRec_Width / 100 + 0.2, miniMapRec_Height / 100 + 0.2);
+                    rectangle.setFill(Color.BLACK);
+                    root.getChildren().add(rectangle);
+                }
+            }
+        }
+
+        Circle circle = new Circle(Hero.inRealMapX * miniMapRec_Width / 100 + 10, Hero.inRealMapY * miniMapRec_Height /100 + 10, miniMapRec_Width / 100 + 1, Color.BLUE);
+        root.getChildren().add(circle);
+    }
+
     public static Image image = new Image(new File("Map.png").toURI().toString());
     public static void drawMap(Group root){
 
@@ -445,6 +478,7 @@ public class MapDrawer{
 
         root.getChildren().addAll(downBlack, leftSideBlack, rightSideBlack, upperBlack);
 
+        drawMiniMap(root);
         Hero.checkShop();
         Hero.checkWar();
 

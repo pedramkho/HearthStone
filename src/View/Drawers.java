@@ -6,6 +6,7 @@ import Cards.MonsterCard.Monster;
 import Cards.SpellCards.Spell;
 import Player.Player;
 import World.World;
+import com.company.GameMode;
 import com.company.Main;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -15,6 +16,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+
+import static View.Graphics.txt;
+
 
 public class Drawers {
     public static void drawStartMenu(Group root) {
@@ -400,6 +404,37 @@ public class Drawers {
 
     }
 
+    static void drawChatRoom(Group root){
+
+
+        Button send = new Button("Send");
+        send.setLayoutX(2*Graphics.Width / 3 + 10);
+        send.setLayoutY(Graphics.Height - 170);
+        send.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                String s = txt.getText();
+                Main.world.chatString += ("_ : " + s + "\n");
+                Main.sendCommand("_ : " + s + "\n");
+            }
+        });
+
+        Button refresh = new Button("Refresh");
+        refresh.setLayoutX(Graphics.Width  - 120);
+        refresh.setLayoutY(Graphics.Height - 170);
+        refresh.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Main.sendCommand("refresh");
+            }
+        });
+
+        Text text = new Text(2 * Graphics.Width / 3, 50, Main.world.chatString);
+
+        root.getChildren().addAll(refresh, send, txt, text);
+    }
+
+
     static void drawRightSideMenuInWar(Group root, World world) {
 
         int X = 2 * Graphics.Width / 3;
@@ -407,6 +442,24 @@ public class Drawers {
 
 
         //add showHand, showItem and done buttons
+
+        if(Main.gameMode == GameMode.MultiPlayer){
+            Button Chat = new Button("Chat");
+            Chat.setLayoutX((X + 10 + Graphics.Width - 120) / 2);
+            Chat.setLayoutY(Graphics.Height - 120);
+            Chat.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(warMenuMode == WarMenuModes.ChatRoom){
+                        warMenuMode = WarMenuModes.ShowHand;
+                    }else{
+                        warMenuMode = WarMenuModes.ChatRoom;
+                    }
+                }
+            });
+            root.getChildren().add(Chat);
+        }
+
         Button showHand = new Button("Show Hand");
         showHand.setLayoutX(X + 10);
         showHand.setLayoutY(Graphics.Height - 120);
@@ -451,6 +504,8 @@ public class Drawers {
             drawCardMode(root, world);
         } else if (warMenuMode == WarMenuModes.GraveYard) {
             drawGraveYard(root, world);
+        } else if(warMenuMode == WarMenuModes.ChatRoom){
+            drawChatRoom(root);
         }
 
     }
@@ -497,5 +552,7 @@ public class Drawers {
         ShowHand,
         ShowItems,
         GraveYard,
+        ChatRoom
+
     }
 }

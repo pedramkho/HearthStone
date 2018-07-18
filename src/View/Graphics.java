@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -18,16 +19,18 @@ import javafx.util.Duration;
 public class Graphics extends Application {
     public static int Height = 700;
     public static int Width = 1200;
-    public static Pages page = Pages.War;
+    public static Pages page = Pages.Map;
     Group root = new Group();
     static World world;
+    public static String chatString = "";
+
+
+    public static TextField txt;
+
+
     public static void run(World world1){
         world = world1;
         launch();
-    }
-
-    public static void updateWorld(){
-        world = Main.world;
     }
 
 
@@ -35,6 +38,11 @@ public class Graphics extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         MapDrawer.initialize();
+
+        txt = new TextField();
+        txt.setLayoutX((2 * Graphics.Width / 3));
+        txt.setLayoutY(5);
+        txt.setMaxWidth(Graphics.Width / 3);
 
 
         Scene scene = new Scene(root);
@@ -65,10 +73,11 @@ public class Graphics extends Application {
             }
         });
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(400), new EventHandler<ActionEvent>() {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(300), new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
+
                 if(page == Pages.StartMenu){
                     Drawers.drawStartMenu(root);
                 }else if(page == Pages.War){

@@ -16,12 +16,13 @@ public class FirstServer extends Thread {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
             Socket socket = serverSocket.accept();
-
             ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
 
+
             Player player = new Player();
             player.initializePlayer();
+            player.actorName = "First Player";
 
             Main.starter = player;
             Main.world.thePlayer = player;
@@ -30,16 +31,25 @@ public class FirstServer extends Thread {
             System.out.println("First server connected");
             Main.OnlineGameStart.acquire();
 
+            Main.onlineWorld = Main.world;
             while(true){
-                os.writeObject(Main.world);
+
+                os.writeObject(Main.onlineWorld);
+
                 World world = (World)is.readObject();
-                if(world.command.contains("otherPlayer")){
-                    Main.print(world.command);
-                }else if(player == Main.playerOnTurn){
+                if(world.command.contains("_")){
+                    Main.world.chatString += (world.command.replace("_", "First Player"));
+                    Main.onlineWorld.chatString = Main.world.chatString;
+                }else if(world.command.contains("refresh")){
+                    Main.onlineWorld = Main.world;
+                } else if(player == Main.playerOnTurn){
                     Main.sendCommand(world.command);
                     Main.commandInProgress.acquire();
                 }
-
+                synchronized (this){
+                    wait(500);
+                }
+                os.reset();
             }
 
 

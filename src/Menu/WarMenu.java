@@ -267,9 +267,7 @@ public abstract class WarMenu {
 
         if (turn > 2) {
             Card card = sideName.moveCardFromDeckToHand();
-            print("[" + card.name + "]");
         }
-        print("[" + sideName.MP + "/" + sideName.MaxMP + "]");
 
         for(Monster monster : sideName.monsterField){
             monster.readyToAttack = true;
@@ -277,6 +275,7 @@ public abstract class WarMenu {
         for(Monster monster : enemySide.monsterField){
             monster.readyToAttack = true;
         }
+
 
     }
 
