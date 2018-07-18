@@ -1,47 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c35f66ca-31c4-4377-ad12-f99435e5f46b" name="Default" comment="Main and WarMenu&#10;(inputStream added)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/Menu/WarMenu.class" afterPath="$PROJECT_DIR$/out/production/Project/Menu/WarMenu.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$1.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$10.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$10.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$11.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$11.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$12.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$12.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$13.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$13.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$14.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$14.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$15.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$15.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$16.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$16.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$17.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$17.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$18.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$18.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$19.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$19.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$2.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$3.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$3.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$4.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$4.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$5.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$5.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$6.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$6.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$7.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$7.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$8.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$8.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$9.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$9.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers$WarMenuModes.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers$WarMenuModes.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Drawers.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Drawers.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Graphics$1.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Graphics$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Graphics$2.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Graphics$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Graphics.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Graphics.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/MapDrawer.class" afterPath="$PROJECT_DIR$/out/production/Project/View/MapDrawer.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/World/World.class" afterPath="$PROJECT_DIR$/out/production/Project/World/World.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/com/company/FirstServer.class" afterPath="$PROJECT_DIR$/out/production/Project/com/company/FirstServer.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/com/company/Main.class" afterPath="$PROJECT_DIR$/out/production/Project/com/company/Main.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/com/company/SecondServer.class" afterPath="$PROJECT_DIR$/out/production/Project/com/company/SecondServer.class" />
-      <change beforePath="$PROJECT_DIR$/src/Menu/WarMenu.java" afterPath="$PROJECT_DIR$/src/Menu/WarMenu.java" />
-      <change beforePath="$PROJECT_DIR$/src/View/Drawers.java" afterPath="$PROJECT_DIR$/src/View/Drawers.java" />
-      <change beforePath="$PROJECT_DIR$/src/View/Graphics.java" afterPath="$PROJECT_DIR$/src/View/Graphics.java" />
-      <change beforePath="$PROJECT_DIR$/src/View/MapDrawer.java" afterPath="$PROJECT_DIR$/src/View/MapDrawer.java" />
-      <change beforePath="$PROJECT_DIR$/src/World/World.java" afterPath="$PROJECT_DIR$/src/World/World.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/FirstServer.java" afterPath="$PROJECT_DIR$/src/com/company/FirstServer.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/SecondServer.java" afterPath="$PROJECT_DIR$/src/com/company/SecondServer.java" />
-    </list>
+    <list default="true" id="c35f66ca-31c4-4377-ad12-f99435e5f46b" name="Default" comment="Main and WarMenu&#10;(inputStream added)" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -339,7 +299,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
@@ -645,7 +605,7 @@
       <workItem from="1531940723967" duration="1163000" />
       <workItem from="1531942548232" duration="1935000" />
       <workItem from="1531944957339" duration="1512000" />
-      <workItem from="1531946799390" duration="798000" />
+      <workItem from="1531946799390" duration="884000" />
     </task>
     <task id="LOCAL-00001" summary="Drawer Updated">
       <created>1531145110700</created>
@@ -679,7 +639,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="312901000" />
+    <option name="totallyTimeSpent" value="312987000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -691,8 +651,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -703,7 +662,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33038673" sideWeight="0.59010416" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.49583334" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33038673" sideWeight="0.40989584" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33038673" sideWeight="0.40989584" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296433" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
