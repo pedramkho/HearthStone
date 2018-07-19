@@ -4,12 +4,17 @@ import com.company.Main;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
+import java.io.File;
+
 public class Hero {
+    private static int counter = 0;
+
+    static boolean warChanged = true;
 
     static int movementSpeed = 1;
-
 
     static int centerX = 1200/4;
     static int centerY = 700/4 - 100;
@@ -28,23 +33,41 @@ public class Hero {
         inRealMapY = (centerY * 100) / MapDrawer.imageRecHeight;
     }
 
-    static int rectangleWidth = 10;
-    static int rectangleHeight = 10;
+    static int rectangleWidth = 20;
+    static int rectangleHeight = 20;
     static Direction lastDirection = Direction.Down;
 
-    public static int X_Calculator(){
+    static int X_Calculator(){
         return centerX - rectangleWidth/2;
     }
 
-    public static int Y_Calculator(){
+    static int Y_Calculator(){
         return centerY - rectangleHeight/2;
     }
 
-    Image[][] heroImage = new Image[4][3]; //TODO: add images
+    static Image[][] heroImage = new Image[4][3]; //TODO: add images
 
+    static void initialize(){
+        heroImage[0][0] = new Image(new File("HeroPics/Hero_Down_0.png").toURI().toString());
+        heroImage[0][1] = new Image(new File("HeroPics/Hero_Down_1.png").toURI().toString());
+        heroImage[0][2] = new Image(new File("HeroPics/Hero_Down_2.png").toURI().toString());
+
+        heroImage[1][0] = new Image(new File("HeroPics/Hero_Up_0.png").toURI().toString());
+        heroImage[1][1] = new Image(new File("HeroPics/Hero_Up_1.png").toURI().toString());
+        heroImage[1][2] = new Image(new File("HeroPics/Hero_Up_2.png").toURI().toString());
+
+        heroImage[2][0] = new Image(new File("HeroPics/Hero_Right_0.png").toURI().toString());
+        heroImage[2][1] = new Image(new File("HeroPics/Hero_Right_1.png").toURI().toString());
+        heroImage[2][2] = new Image(new File("HeroPics/Hero_Right_2.png").toURI().toString());
+
+        heroImage[3][0] = new Image(new File("HeroPics/Hero_Left_0.png").toURI().toString());
+        heroImage[3][1] = new Image(new File("HeroPics/Hero_Left_1.png").toURI().toString());
+        heroImage[3][2] = new Image(new File("HeroPics/Hero_Left_2.png").toURI().toString());
+    }
 
     public static void moveLeft(){
         calculateNodes();
+        counter++;
 
         lastDirection = Direction.Left;
         if(!MapDrawer.IsNotPassAble[(inRealMapX - 1 + 100)% 100][inRealMapY]) {
@@ -56,7 +79,7 @@ public class Hero {
 
                 if ((MapDrawer.imageX) * (MapDrawer.imageX) < (1200/4) * (1200/4)
                         && (MapDrawer.imageY) * (MapDrawer.imageY) < (700/4) * (700/4)) {
-                    MapDrawer.imageX += movementSpeed;
+                    MapDrawer.imageX += movementSpeed + rectangleHeight / 2;
                 }
             }
         }
@@ -65,6 +88,7 @@ public class Hero {
     }
     public static void moveRight() {
         calculateNodes();
+        counter++;
 
         lastDirection = Direction.Right;
         if(!MapDrawer.IsNotPassAble[(inRealMapX + 1 + 100)% 100][inRealMapY]) {
@@ -76,7 +100,7 @@ public class Hero {
 
                 if ((MapDrawer.imageX) * (MapDrawer.imageX) < (1200/4) * (1200/4)
                         && (MapDrawer.imageY) * (MapDrawer.imageY) < (700/4) * (700/4)) {
-                    MapDrawer.imageX -= movementSpeed;
+                    MapDrawer.imageX -= movementSpeed + rectangleHeight / 2;
                 }
 
             }
@@ -84,6 +108,8 @@ public class Hero {
     }
     public static void moveUp(){
         calculateNodes();
+        counter++;
+
         //centerY -= movementSpeed;
         lastDirection = Direction.Up;
         if(!MapDrawer.IsNotPassAble[inRealMapX][(inRealMapY - 1 + 100)% 100]) {
@@ -95,7 +121,7 @@ public class Hero {
 
                 if ((MapDrawer.imageX) * (MapDrawer.imageX) < (1200/4) * (1200/4)
                         && (MapDrawer.imageY) * (MapDrawer.imageY) < (700/4) * (700/4)) {
-                    MapDrawer.imageY += movementSpeed;
+                    MapDrawer.imageY += movementSpeed + rectangleHeight / 2;
                 }
 
             }
@@ -103,7 +129,7 @@ public class Hero {
     }
     public static void moveDown(){
         calculateNodes();
-
+        counter++;
         lastDirection = Direction.Down;
         if(!MapDrawer.IsNotPassAble[inRealMapX][(inRealMapY + 1 + 100)% 100]) {
             if (inViewX < MapDrawer.viewRecWidth / 2 && -MapDrawer.viewRecWidth / 2 < inViewX
@@ -114,16 +140,61 @@ public class Hero {
 
                 if ((MapDrawer.imageX) * (MapDrawer.imageX) < (1200/4) * (1200/4)
                         && (MapDrawer.imageY) * (MapDrawer.imageY) < (700/4) * (700/4)) {
-                    MapDrawer.imageY -= movementSpeed;
+                    centerY += movementSpeed;
+                    inViewY += movementSpeed;
+
+                    MapDrawer.imageY -=  movementSpeed + rectangleHeight / 2;
                 }
 
             }
         }
     }
 
+    private static Image setHeroImage(){
+        if(Hero.lastDirection == Direction.Down){
+            switch (counter % 3){
+                case 0:
+                    return heroImage[0][0];
+                case 1:
+                    return heroImage[0][1];
+                case 2:
+                    return heroImage[0][2];
+            }
+        }else if(Hero.lastDirection == Direction.Up){
+            switch (counter % 3){
+                case 0:
+                    return heroImage[1][0];
+                case 1:
+                    return heroImage[1][1];
+                case 2:
+                    return heroImage[1][2];
+            }
+        }else if(Hero.lastDirection == Direction.Right){
+            switch (counter % 3){
+                case 0:
+                    return heroImage[2][0];
+                case 1:
+                    return heroImage[2][1];
+                case 2:
+                    return heroImage[2][2];
+            }
+        }else if(Hero.lastDirection == Direction.Left){
+            switch (counter % 3){
+                case 0:
+                    return heroImage[3][0];
+                case 1:
+                    return heroImage[3][1];
+                case 2:
+                    return heroImage[3][2];
+            }
+        }
+        return heroImage[1][2];
+    }
     public static void drawHero(Group root){
         Rectangle rectangle = new Rectangle(MapDrawer.imageX + X_Calculator(),MapDrawer.imageY + Y_Calculator(), rectangleWidth, rectangleHeight);
-        rectangle.setFill(Color.RED);
+        //TODO: set images
+        rectangle.setFill(new ImagePattern( setHeroImage() ));
+        //rectangle.setFill(Color.RED);
         root.getChildren().addAll(rectangle);
     }
 
@@ -132,6 +203,8 @@ public class Hero {
         int[] Y = {((centerY - rectangleHeight/2)*100/MapDrawer.imageRecWidth + 100) % 100, ((centerY + rectangleHeight/2)*100/MapDrawer.imageRecWidth + 100) % 100};
         if(MapDrawer.War[X[0]][Y[0]] || MapDrawer.War[X[0]][Y[1]]
                 || MapDrawer.War[X[1]][Y[0]] || MapDrawer.War[X[1]][Y[1]]){
+
+            warChanged = true;
             Graphics.page = Pages.War;
             if(Main.warNumber > 0){
                 //TODO: add command

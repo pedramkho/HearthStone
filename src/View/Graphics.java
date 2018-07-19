@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -22,11 +23,10 @@ public class Graphics extends Application {
     public static Pages page = Pages.Map;
     Group root = new Group();
     static World world;
-    public static String chatString = "";
 
 
-    public static TextField txt;
-
+    static TextField txt;
+    static MediaPlayer mediaPlayer;
 
     public static void run(World world1){
         world = world1;
@@ -38,6 +38,7 @@ public class Graphics extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         MapDrawer.initialize();
+        Hero.initialize();
 
         txt = new TextField();
         txt.setLayoutX((2 * Graphics.Width / 3));
