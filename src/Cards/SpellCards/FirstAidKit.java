@@ -5,7 +5,6 @@ import Player.Player;
 public class FirstAidKit extends Spell {
 
     public FirstAidKit() {
-        super.targetIsFriendly = true;
         super.name = "First Aid Kit";
         super.MPCost = 3;
         super.type = cardType.Instant;

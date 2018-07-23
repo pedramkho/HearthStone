@@ -1,14 +1,47 @@
 package Cards;
 
-import java.io.Serializable;
-import java.lang.reflect.Constructor;
+import Cards.MonsterCard.Monster;
+import Cards.SpellCards.Spell;
+import customGame.CustomGame;
 
-public class Card implements Serializable {
-    //TODO: We should add all cards name
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import static Cards.MonsterCard.Monster.removeMonster;
+import static Cards.SpellCards.Spell.removeSpellCard;
+
+public class Card extends Component {
+    public boolean targetIsFriendly = false;
+    public static ArrayList<Card> cards = new ArrayList<>();
+    public static Map<String,Integer> cardsNumberInShop = new HashMap<>();
+    public static void computeCardsNumberInShop(){
+        for(Card card : CustomGame.data.cards) {
+            int numberInShop;
+            if (card.custom)
+                numberInShop = card.defaultNumberInShop;
+            else if (card instanceof Monster)
+                switch (((Monster) card).type) {
+                    case Normal:
+                        numberInShop = 4;
+                        break;
+                    case Hero:
+                        numberInShop = 1;
+                        break;
+                    default:
+                        numberInShop = 2;
+                }
+            else if (card.MPCost < 6)
+                numberInShop = 3;
+            else
+                numberInShop = 2;
+            cardsNumberInShop.put(card.getName(), numberInShop);
+        }
+    }
     public int MPCost;
-    public String name;
+    public int price;
     public boolean needChoosing = false;
-    //added
     public String description ;
     //todo
     public String cardInfo(){
@@ -48,7 +81,16 @@ public class Card implements Serializable {
     public int hashCode() {
         return getClass().getName().hashCode();
     }
-    public String getName(){return null;}
-//end
+    public String getName(){return name;}
+    public static boolean removeCard(String name){
+        return removeMonster(name)&&removeSpellCard(name);
+    }
+    public boolean equals(Card card){
+        if(this instanceof Monster)
+            return (card instanceof Monster) && ((Monster)this).equals((Monster)card);
+        return (card instanceof Spell) && ((Spell)this).equals((Spell)card);
+    }
+    public static void initializeCardsNumberInShop(){
 
+    }//todo
 }

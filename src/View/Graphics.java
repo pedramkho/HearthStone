@@ -24,6 +24,9 @@ public class Graphics extends Application {
     Group root = new Group();
     static World world;
 
+    //
+    public static Stage stage = null;
+    //
 
     static TextField txt;
     static MediaPlayer mediaPlayer;
@@ -99,5 +102,15 @@ public class Graphics extends Application {
 
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+    }
+    //
+    public static void goToScene(Scene scene){
+        stage.setScene(scene);
+    }
+    public static void goToMainMenu() {
+        //bazgasht be halat default faramoosh nashavad
+    }//todo
+    public static void goToPlayCustomGame(){
+
     }
 }

@@ -291,10 +291,11 @@ public class Main {
     public static Player starter = new Player();
     public static Player other = new Player();
     public static Player playerOnTurn = new Player();
-    
+
+    public static Player player = new Player();
 
     public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
-
+        player = world.thePlayer;
 
         if(thisIsServer){
             //This is server

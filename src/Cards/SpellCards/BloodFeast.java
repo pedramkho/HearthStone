@@ -5,12 +5,12 @@ import Player.Player;
 public class BloodFeast extends Spell {
 
     public BloodFeast() {
-        super.targetIsFriendly = false;
         super.type = cardType.Instant;
         super.MPCost = 4;
         super.name = "Blood Feast";
         super.cardTypeInString = "Instant";
         super.details = "Deal 500 damage to enemy player and heal your player for 500 HP.";
+        super.isTradable = false;//remember
     }
 
     public void action(Player player, Player enemy, int target) {

@@ -26,7 +26,7 @@ import com.company.Main;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
+import java.util.Iterator;import ItemsAndAmulets.Item;	import customGame.CustomGame;import customGame.CustomGame;
 
 public class Player implements Serializable{
     public double demonKingsCrownEffect = 1;
@@ -66,40 +66,10 @@ public class Player implements Serializable{
         this.currentMaxMP = 1;
     }
     public void initializePlayer() {
-        Main.again = ("Please enter your name : ");
-        System.out.print(Main.again);
-        //TODO:
-        String name = "";//Main.scanner.nextLine();
-        actorName = name;
-        this.Hero.name = name;
-        //add items to inventory
-        inventory.removeOrAddToItems(new MysticHourglass(),3);
-        inventory.removeOrAddToItems(new SmallHPPotion(),2);
-        inventory.removeOrAddToItems(new SmallMPPotion(),2);
-        //add Elven monsters to deck
-        inventory.removeOrAddToDeck(new ElvenRanger(),2);
-        inventory.removeOrAddToDeck(new ElvenHunter(),2);
-        inventory.removeOrAddToDeck(new ElvenGuardsman(),1);
-        inventory.removeOrAddToDeck(new ElvenAssassin(),1);
-        inventory.removeOrAddToDeck(new ElvenDruid(),1);
-        //add DragonBreed monsters to deck
-        inventory.removeOrAddToDeck(new LesserWhelp(),2);
-        inventory.removeOrAddToDeck(new Dragonling(),2);
-        inventory.removeOrAddToDeck(new ArmoredDragon(),1);
-        inventory.removeOrAddToDeck(new YellowDrake(),1);
-        inventory.removeOrAddToDeck(new BlueDragon(),1);
-        //add Atlantian monsters to deck
-        inventory.removeOrAddToDeck(new MurlocCrawler(),2);
-        inventory.removeOrAddToDeck(new MurlocWarrior(),2);
-        inventory.removeOrAddToDeck(new GiantCrab(),1);
-        inventory.removeOrAddToDeck(new SharkMan(),1);
-        inventory.removeOrAddToDeck(new NagaSiren(),1);
-        //add spell cards to deck
-        inventory.removeOrAddToDeck(new FirstAidKit(),3);
-        inventory.removeOrAddToDeck(new ThrowingKnives(),3);
-        inventory.removeOrAddToDeck(new PoisionousCauldron(),1);
-        inventory.removeOrAddToDeck(new HealingWard(),1);
-        inventory.removeOrAddToDeck(new WarDrum(),1);
+        inventory.cards = new ArrayList<>(CustomGame.data.initialInventoryCards);
+        inventory.items = new ArrayList<>(CustomGame.data.initialInventoryItems);
+        inventory.amulets = new ArrayList<>(CustomGame.data.initialInventoryAmulets);
+        inventory.deck = new ArrayList<>(CustomGame.data.initialDeck);
         this.shuffleDeckCards();
     }
     public void initializeGoblinChieftain(){

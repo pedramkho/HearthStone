@@ -10,6 +10,7 @@ public class MeteorShower extends Spell {
         super.type = cardType.Continuous;
         super.cardTypeInString = "Continuous";
         super.details = "Deal 800 damage to a random enemy monster card on field or player.";
+        super.isTradable = false;//remember
     }
 
     public void action(Player player, Player enemy, int target) {

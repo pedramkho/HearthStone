@@ -1,13 +1,12 @@
 package ItemsAndAmulets.Amulets;
 
 import ItemsAndAmulets.Amulet;
-import ItemsAndAmulets.Item;
 import Player.Player;
 
 public class DimondRing extends Amulet {
 
     public DimondRing() {
-        super.amuletCost = 8000;
+        super.price = 8000;
         super.name = "Diamond Pendant";
         super.details = "Increase Player’s Max MP by 3.";
     }

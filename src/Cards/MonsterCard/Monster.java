@@ -4,14 +4,10 @@ import Cards.Card;
 import Cards.SpellCards.Spell;
 import Player.Player;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Monster extends Card implements Serializable{
-
-
+public class Monster extends Card {
     //TODO: default HP and AP should be added
-
     //info:
     public ArrayList<Spell> auraEffects = new ArrayList<>();//used in spells
     public boolean haveSpell = false;                           //
@@ -26,8 +22,6 @@ public class Monster extends Card implements Serializable{
     public boolean Alive = true;
     //TODO: We should change Nimble cards readyTOAttack parameter
     public boolean readyToAttack = false;
-
-    //added
     public String battleCryDescription = null;
     public String willDescription = null;
     public String spellDetails = null;
@@ -38,28 +32,28 @@ public class Monster extends Card implements Serializable{
         MPCost = 0;
     }
 
-    public String cardInfo(){
+    public String cardInfo() {
         String string = this.name + "\n" + "HP: " + this.HP + "\nAP: " + this.AP + "\n" + description;
         return string;
     }
 
-
-
     //actions:
-    public boolean deathCheck(){
-        if(this.HP <= 0){
+    public boolean deathCheck() {
+        if (this.HP <= 0) {
             return true;
         }
         return false;
     }
-    public static void revive(Monster monster){
-        if(monster.type == Type.SpellCaster){
+
+    public static void revive(Monster monster) {
+        if (monster.type == Type.SpellCaster) {
             monster.haveSpell = true;
         }
         monster.HP = monster.defaultHP;
         monster.AP = monster.defaultAP;
         monster.Alive = true;
     }
+
     public void attack(Player player, Player enemy, int target) {
         //target -1 = hero
         //target -2 = no need to set target
@@ -86,7 +80,7 @@ public class Monster extends Card implements Serializable{
 
             System.out.println(this.name + " clashed with " + defender.name);
 
-        }else if (target > -1){
+        } else if (target > -1) {
 
             enemy.choosenMonster = enemy.getSearchedMonster(target);
             this.HP -= enemy.choosenMonster.AP * enemy.demonKingsCrownEffect;
@@ -102,7 +96,7 @@ public class Monster extends Card implements Serializable{
                 enemy.choosenMonster.Alive = false;
             }
             System.out.println(this.name + " clashed with " + enemy.choosenMonster.name);
-        }else{
+        } else {
             enemy.Hero.HP -= this.AP * player.demonKingsCrownEffect;
             this.HP -= enemy.Hero.AP * enemy.demonKingsCrownEffect;
 
@@ -117,14 +111,55 @@ public class Monster extends Card implements Serializable{
     }
 
     //spells:
-    public void will(Player player, Player enemy, int target){
+    public void will(Player player, Player enemy, int target) {
         //Should get override
     }
-    public void spellEffect(Player player, Player enemy, int target){
+
+    public void spellEffect(Player player, Player enemy, int target) {
         //Should get override
     }
-    public void battlecry(Player player, Player enemy, int  target){
+
+    public void battlecry(Player player, Player enemy, int target) {
         //Should be override
+    }
+
+
+    public Monster(String name, Type type, Specialty specialty, House house, int defaultHP, int defaultAP, int MPcost, int price,boolean custom) {
+        super.name = name;
+        this.type = type;
+        this.specialty = specialty;
+        this.house = house;
+        this.defaultHP = defaultHP;
+        this.defaultAP = defaultAP;
+        super.MPCost = MPcost;
+        super.price = price;
+        super.custom = custom;
+    }
+
+    public void makeCustomMonster(String name, Type type, Specialty specialty, House house, int defaultHP, int defaultAP, int MPcost, int price) {
+        if (existMonster(name)) {
+            System.out.println("Duplicate name");//todo
+            return;
+        }
+    }
+
+    public static boolean existMonster(String cardName) {
+        for (Card card : cards)
+            if ((card instanceof Monster) && card.getName().equals(cardName))
+                return true;
+        return false;
+    }
+
+    public static boolean removeMonster(String name) {
+        for (Card card : cards)
+            if ((card instanceof Monster) && card.getClass().equals(name)) {
+                cards.remove(card);
+                return true;
+            }
+        return false;
+    }
+    public boolean equals(Monster monster){
+        return getName().equals(monster.name);
     }
 }
 

@@ -3,11 +3,9 @@ package ItemsAndAmulets.Items;
 import ItemsAndAmulets.Item;
 import Player.Player;
 
-import java.io.Serializable;
-
-public class LesserRestorative extends Item implements Serializable {
+public class LesserRestorative extends Item {
     public LesserRestorative(){
-        super.itemCost = 2000;
+        super.price = 2000;
         super.name = "Lesser Restorative";
         super.details = "Increase Player’s HP by 500 and MP by 2.";
     }

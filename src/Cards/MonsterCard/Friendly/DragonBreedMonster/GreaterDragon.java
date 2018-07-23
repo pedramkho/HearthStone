@@ -32,6 +32,6 @@ public class GreaterDragon extends Monster {
         }
     }
 
-    String willDescription = "Dragon’s Call: draw two cards from deck to hand.";
+    String willDescription = "Dragon’s Call: draw two cards from initialDeck to hand.";
     String battleCryDescription = "Devour: Send a random enemy monster card from field to graveyard.";
 }

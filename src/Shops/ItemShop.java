@@ -33,7 +33,7 @@ public class ItemShop extends Shop{
         String primarymessage = "Shop List :\n";
         int num = 1;
         for(Item item : items){
-            primarymessage += Integer.toString(num) + ".\t" + item.name + " " + Integer.toString(item.itemCost) +"\n";
+            primarymessage += Integer.toString(num) + ".\t" + item.name + " " + Integer.toString(item.getPrice()) +"\n";
             num++;
         }
         primarymessage += player.inventory.showItems();
@@ -41,73 +41,73 @@ public class ItemShop extends Shop{
     }
     @Override
     public void buy(Player player,String command){
-        String itemName;
-        try {
-            itemName = command.substring(command.indexOf(" ")+1,command.indexOf("-")-1);
-        }catch (Exception e){
-            Main.print("Invalid input format!");
-            return;
-        }
-        int numberToBuy;
-        Item item = Item.getInstance(itemName);
-        if (item == null){
-            Main.print("Invalid Item Name!");
-            return;
-        }
-        try {
-            numberToBuy = Integer.parseInt(command.substring(command.indexOf("-")+2));
-        }catch (NumberFormatException e){
-            Main.print("Invalid input!");
-            return;
-        }
-        if(numberToBuy < 1){
-            Main.print("Invalid input : #NumberToBuy must be a positive number!");
-            return;
-        }
-        if(numberToBuy * item.itemCost > player.money){
-            Main.print("Not enough Gil!");
-            return;
-        }
-        player.inventory.removeOrAddToItems(item,numberToBuy);
-        player.money -= numberToBuy*item.itemCost;
-        Shop.print(player,"Successfully bought " + Integer.toString(numberToBuy) + " of " +item.name + ".");
+//        String itemName;
+//        try {
+//            itemName = command.substring(command.indexOf(" ")+1,command.indexOf("-")-1);
+//        }catch (Exception e){
+//            Main.print("Invalid input format!");
+//            return;
+//        }
+//        int numberToBuy;
+//        Item item = Item.getInstance(itemName);
+//        if (item == null){
+//            Main.print("Invalid Item Name!");
+//            return;
+//        }
+//        try {
+//            numberToBuy = Integer.parseInt(command.substring(command.indexOf("-")+2));
+//        }catch (NumberFormatException e){
+//            Main.print("Invalid input!");
+//            return;
+//        }
+//        if(numberToBuy < 1){
+//            Main.print("Invalid input : #NumberToBuy must be a positive number!");
+//            return;
+//        }
+//        if(numberToBuy * item.price > player.money){
+//            Main.print("Not enough Gil!");
+//            return;
+//        }
+//        player.inventory.removeOrAddToItems(item,numberToBuy);
+//        player.money -= numberToBuy*item.price;
+//        Shop.print(player,"Successfully bought " + Integer.toString(numberToBuy) + " of " +item.name + ".");
     }
     @Override
     public void sell(Player player,String command){
-        String itemName;
-        try {
-            itemName = command.substring(command.indexOf(" ")+1,command.indexOf("-")-1);
-        }catch (Exception e){
-            Main.print("Invalid input format!");
-            return;
-        }
-        int numberToSell;
-        Item forSaleItem = Item.getInstance(itemName);
-        if (forSaleItem==null){
-            Main.print("Invalid Item Name!");
-            return;
-        }
-        try {
-            numberToSell = Integer.parseInt(command.substring(command.indexOf("-")+2));
-        } catch (NumberFormatException e){
-            Main.print("Invalid input!");
-            return;
-        }
-        if(numberToSell < 1){
-            Main.print("Invalid input : #NumberToSell must be a positive number!");
-            return;
-        }
-        int numOnInventory = 0;
-        for(Item item : player.inventory.items)
-            if(item.equals(forSaleItem))
-                numOnInventory++;
-        if(numberToSell > numOnInventory){
-            Main.print("Not enough cards!");
-            return;
-        }
-        player.inventory.removeOrAddToItems(forSaleItem,-numberToSell);
-        player.money += numberToSell * forSaleItem.itemCost / 2;
-        Shop.print(player,"Successfully sold " + Integer.toString(numberToSell) + " of " + forSaleItem.name+ "!");
+//        String itemName;
+//        try {
+//            itemName = command.substring(command.indexOf(" ")+1,command.indexOf("-")-1);
+//        }catch (Exception e){
+//            Main.print("Invalid input format!");
+//            return;
+//        }
+//        int numberToSell;
+//        Item forSaleItem = Item.getInstance(itemName);
+//        if (forSaleItem==null){
+//            Main.print("Invalid Item Name!");
+//            return;
+//        }
+//        try {
+//            numberToSell = Integer.parseInt(command.substring(command.indexOf("-")+2));
+//        } catch (NumberFormatException e){
+//            Main.print("Invalid input!");
+//            return;
+//        }
+//        if(numberToSell < 1){
+//            Main.print("Invalid input : #NumberToSell must be a positive number!");
+//            return;
+//        }
+//        int numOnInventory = 0;
+//        for(Item item : player.inventory.items)
+//            if(item.equals(forSaleItem))
+//                numOnInventory++;
+//        if(numberToSell > numOnInventory){
+//            Main.print("Not enough cards!");
+//            return;
+//        }
+//        player.inventory.removeOrAddToItems(forSaleItem,-numberToSell);
+//        player.money += numberToSell * forSaleItem.price / 2;
+//        Shop.print(player,"Successfully sold " + Integer.toString(numberToSell) + " of " + forSaleItem.name+ "!");
     }
     @Override
     public String info(String command){

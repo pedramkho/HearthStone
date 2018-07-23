@@ -1,27 +1,33 @@
 package Inventory;
 
 import Cards.Card;
+import Cards.Component;
+import Cards.ComponentType;
+import Cards.SpellCards.Spell;
 import ItemsAndAmulets.Amulet;
 import ItemsAndAmulets.Item;
 import Shops.AmuletShop;
 import Shops.CardShop;
 import Shops.ItemShop;
 import com.company.Main;
+import data.constants.General;
+import exceptions.inventoryExceptions.DeckIsFull;
+import exceptions.inventoryExceptions.InventoryException;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventory implements Serializable {
+import static data.constants.General.MAX_DECK_SIZE;
+
+public class Inventory {
     public ArrayList<Card> deck = new ArrayList<>();
-    public ArrayList<Card> cards = new ArrayList<>();
-    public ArrayList<Item> items = new ArrayList<>();
-    public ArrayList<Amulet> amulets = new ArrayList<>();
+    public ArrayList<Card> cards;
+    public ArrayList<Item> items ;
+    public ArrayList<Amulet> amulets ;
     public Amulet equippedAmulet = null;
 
     public Inventory(ArrayList<Card> deck){
         this.deck = deck;
     }
-
     public void inventory(){
         printHelp();
         while(true){
@@ -88,7 +94,7 @@ public class Inventory implements Serializable {
         String help = "1.\tCard Inventory : To view your cards" +
                 "\n2.\tItem Inventory : To view your items" +
                 "\n3.\tAmulet Inventory : To view your amulets" +
-                "\n4.\tEdit Deck : To edit your deck" +
+                "\n4.\tEdit Deck : To edit your initialDeck" +
                 "\nEdit Amulets : To equip or remove your amulets" +
                 "6.\tExit : to exit to previous menu";
         Main.print(help);
@@ -112,7 +118,7 @@ public class Inventory implements Serializable {
                     if(cards.get(i).equals(deck.get(j)))
                         numOnDeck++;
                 cardInventory += "\n" +  Integer.toString(num) + ".\t" + Integer.toString(numOnInventory) + " " + cards.get(i).name
-                        + " / " + Integer.toString(numOnDeck) + " on deck";
+                        + " / " + Integer.toString(numOnDeck) + " on initialDeck";
                 num++;
             }
         }
@@ -177,8 +183,8 @@ public class Inventory implements Serializable {
             String command = Main.scanner.nextLine();
             switch (command) {
                 case "Help":
-                    String help = "1.\tAdd \"Card Name\" #CardSlotNum : To add cards to your deck\n" +
-                            "2.\tRemove \"Card Name\" #CardSlotNum : To remove cards from your deck\n" +
+                    String help = "1.\tAdd \"Card Name\" #CardSlotNum : To add cards to your initialDeck\n" +
+                            "2.\tRemove \"Card Name\" #CardSlotNum : To remove cards from your initialDeck\n" +
                             "3.\tInfo \"Card Name\" : To get more information about a specific card\n" +
                             "4.\tExit: To return to the previous section";
                     Main.print(help);
@@ -333,5 +339,101 @@ public class Inventory implements Serializable {
         else
             for(int i = 0; i < -num;i++)
                 cards.remove(card);
+    }
+    //phase 3
+    public void removeOrAddComponent(Component component,int num){
+        if(component instanceof Card)
+            removeOrAddToCards((Card) component,num);
+        else if(component instanceof Item)
+            removeOrAddToItems((Item) component,num);
+        else if(component instanceof Amulet)
+            removeOrAddToAmulets((Amulet) component,num);
+        else
+            System.out.println("Erorr while adding component to inventory");
+    }
+    public int numberInInventory(Component component){
+        int num = 0;
+        for(Component card : cards)
+            if(card.equals(component))
+                num++;
+        for(Component item : items)
+            if(item.equals(component))
+                num++;
+        for(Component amulet : amulets)
+            if(amulet.equals(component))
+                num++;
+        return num;
+    }
+    public int numberInDeck(Card searchingCard){
+        int num = 0;
+        for(Card card : deck)
+            if(card.equals(searchingCard))
+                num++;
+        return num;
+    }
+    public Component[] getPlayerComponents(ComponentType componentType,boolean cardsIncludeDeck){
+        ArrayList<Component> components = null;
+        switch (componentType) {
+            case Item:
+                components = new ArrayList<>(items);
+                break;
+            case Amulet:
+                components = new ArrayList<>(amulets);
+                break;
+            case Card:
+                components = new ArrayList<>(cards);
+                if (cardsIncludeDeck)
+                    components.addAll(deck);
+        }
+        components = removeduplicates(components);
+        return components.toArray(new Component[components.size()]);
+    }
+    public void addToDeck(Card card) throws DeckIsFull {
+        for(int i = 0;i < deck.size();i++)
+            if(deck.get(i)==null){
+                deck.set(i,card);
+                cards.remove(card);
+                return;
+            }
+        if(deck.size() < MAX_DECK_SIZE) {
+            deck.add(card);
+            cards.remove(card);
+        }
+        else
+            throw new DeckIsFull();
+    }
+    public boolean removeFromDeck(Card card) {
+        if (deck.remove(card)){
+            cards.add(card);
+            return true;
+        }
+        return false;
+    }
+    public void swapDeckCards(int i,int j){
+        Card card1 = deck.get(i);
+        Card card2 = deck.get(j);
+        deck.set(i,card2);
+        deck.set(j,card1);
+    }
+    public Card[] getDeck(){
+        return deck.toArray(new Card[deck.size()]);
+    }
+    public void equipAmulet(Amulet amulet){
+        if(equippedAmulet!=null)
+            amulets.add(equippedAmulet);
+        amulets.remove(amulet);
+        equippedAmulet = amulet;
+    }
+    public void removeEquippedAmulet(){
+        if(equippedAmulet!=null)
+            amulets.add(equippedAmulet);
+        equippedAmulet = null;
+    }
+    public ArrayList<Component> removeduplicates(ArrayList<Component> components){
+        for(int i = components.size()-1;i>-1;i--){
+            if(components.indexOf(components.get(i))<i)
+                components.remove(i);
+        }
+        return components;
     }
 }

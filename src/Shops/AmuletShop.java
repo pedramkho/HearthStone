@@ -36,7 +36,7 @@ public class AmuletShop extends Shop{
         String primaryMessage = "Shop List :\n";
         int num = 1;
         for(Amulet amulet:amulets){
-            primaryMessage += Integer.toString(num) + ".\t" + amulet.name + " " + Integer.toString(amulet.amuletCost) + "\n";
+            primaryMessage += Integer.toString(num) + ".\t" + amulet.name + " " + Integer.toString(amulet.getPrice()) + "\n";
             num++;
         }
         primaryMessage += "Equipped Amulet : ";
@@ -81,7 +81,7 @@ public class AmuletShop extends Shop{
             Main.print("Not enough amulets in shop!");
             return;
         }
-        if(numberToBuy * amulet.amuletCost > player.money){
+        if(numberToBuy * amulet.getPrice() > player.money){
             Main.print("Not enough Gil!");
             return;
         }
@@ -89,7 +89,7 @@ public class AmuletShop extends Shop{
         if(stock.get(amulet)==0)
             amulets.remove(amulet);
         player.inventory.removeOrAddToAmulets(amulet,numberToBuy);
-        player.money -= numberToBuy * amulet.amuletCost;
+        player.money -= numberToBuy * amulet.getPrice();
         Shop.print(player,"Successfully bought " + Integer.toString(numberToBuy) + " of " + amulet.name + "!");
     }
     @Override
@@ -136,7 +136,7 @@ public class AmuletShop extends Shop{
             stock.put(forSaleAmulet,0);
         }
         stock.put(forSaleAmulet,stock.get(forSaleAmulet) + numberToSell);
-        player.money += numberToSell * forSaleAmulet.amuletCost /2;
+        player.money += numberToSell * forSaleAmulet.getPrice() /2;
         Shop.print(player,"Successfully sold "+Integer.toString(numberToSell) + " of " + forSaleAmulet.name + "!");
     }
     @Override

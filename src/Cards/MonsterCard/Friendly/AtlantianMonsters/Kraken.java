@@ -20,8 +20,6 @@ public class Kraken extends Monster {
         super.MPCost = 8;
         super.type = Type.General;
         super.specialty = Specialty.None;
-        battleCryDescription = "Titan’s Presence: Return one random enemy monster card from field to hand and reduce all enemy monsters’ AP by 200";
-        willDescription = "Titan’s Fall: Deal 400 damage to all enemy monster cards and player.";
     }
 
     //Will:
@@ -42,6 +40,6 @@ public class Kraken extends Monster {
         enemy.hand.add(enemy.choosenMonster);
     }
 
-    String battleCryDescription;
-    String willDescription;
+    String battleCryDescription = "Titan’s Presence: Return one random enemy monster card from field to hand and reduce all enemy monsters’ AP by 200";
+    String willDescription = "Titan’s Fall: Deal 400 damage to all enemy monster cards and player.";
 }

@@ -3,11 +3,9 @@ package ItemsAndAmulets.Items;
 import ItemsAndAmulets.Item;
 import Player.Player;
 
-import java.io.Serializable;
-
-public class LargeHPPotion extends Item implements Serializable {
+public class LargeHPPotion extends Item {
     public LargeHPPotion(){
-        super.itemCost = 4000;
+        super.price = 4000;
         super.name = "Large HP Potion";
         super.details = "Increase Player’s HP by 2000.";
     }

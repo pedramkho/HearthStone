@@ -3,9 +3,10 @@ package Cards.SpellCards;
 import Cards.Card;
 import Player.Player;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Spell extends Card implements Serializable {
+public class Spell extends Card {
+
     public String cardTypeInString = "";
     public cardType type = cardType.Instant;
     public String details;
@@ -14,8 +15,6 @@ public class Spell extends Card implements Serializable {
         super.description = "";
     }
 
-
-    public boolean targetIsFriendly = false;
     public void action(Player player, Player enemy, int target){}
     public void removeSpell(Player player){
         auraRemove(player);
@@ -36,7 +35,18 @@ public class Spell extends Card implements Serializable {
         ans = ans + this.details;
         return ans;
     }
+    public static boolean removeSpellCard(String name){
+        for(Card card : cards)
+            if((card instanceof Spell) && card.getName().equals(name)){
+                cards.remove(card);
+                return true;
+            }
+            return false;
+    }
 
+    public boolean equals(Spell spell){
+        return name.equals(spell.name);
+    }
 }
 
 

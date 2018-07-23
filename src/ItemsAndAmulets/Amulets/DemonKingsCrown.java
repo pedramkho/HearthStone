@@ -6,9 +6,10 @@ import Player.Player;
 public class DemonKingsCrown extends Amulet {
 
     public DemonKingsCrown() {
-        super.amuletCost = 0;
+        super.price = 0;
         super.name = "Demon King's Crown";
         super.details = "Decrease All Incoming Damages by 20%.";
+        super.isTradable = false;//remember
     }
 
     public void action(Player player){

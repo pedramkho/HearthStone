@@ -1,7 +1,10 @@
 package Shops;
 
+import Cards.Component;
+import ItemsAndAmulets.Item;
 import Player.Player;
 import com.company.Main;
+import exceptions.shopExceptions.*;
 
 
 abstract public class Shop {
@@ -83,4 +86,32 @@ abstract public class Shop {
     public static void print(Player player,String output){
         Main.print("Remaining Gil : " + player.money + " Gil\n"+output);
     }
+    //phase 2,3
+    public static void buy(Player player,int numberToBuy,Component component) throws ShopException {
+        if(!component.isTradable())
+            throw new IsNotTradable(component);
+        if(!enoughInStock(component,numberToBuy))
+            throw new NotEnoghInStock(component);
+        if(player.money < numberToBuy*component.getPrice())
+            throw new NotEnoghGilException();
+        player.inventory.removeOrAddComponent(component,numberToBuy);
+        player.money -= numberToBuy*component.getPrice();
+        component.changeNumberInShop(-numberToBuy);
+    }
+    public static void sell(Player player,int numberToSell,Component component) throws ShopException{
+        if(!component.isTradable())
+            throw new IsNotTradable(component);
+        if(!enoughInInventory(player,component,numberToSell))
+            throw new NotEnoughInInventoryException(component);
+        player.inventory.removeOrAddComponent(component,-numberToSell);
+        player.money += (numberToSell*component.getPrice())/2;
+        component.changeNumberInShop(numberToSell);
+    }
+    private static boolean enoughInStock(Component component,int num){
+        return (component instanceof Item) || (component.getNumberInShop() >= num);
+    }
+    private static boolean enoughInInventory(Player player,Component component,int num){
+        return (player.inventory.numberInInventory(component) >= num);
+    }
+
 }

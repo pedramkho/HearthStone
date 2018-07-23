@@ -11,11 +11,11 @@ public class StrategicRetreat extends Spell {
         super.type = cardType.Instant;
         super.cardTypeInString = "Instant";
         super.needChoosing = true;
-        super.details = "Select and move a monster card from field to hand and draw one card from deck.";
+        super.details = "Select and move a monster card from field to hand and draw one card from initialDeck.";
     }
 
     public void action(Player player, Player enemy, int target) {
-        //TODO: need to get checked in deck
+        //TODO: need to get checked in initialDeck
         player.moveCardFromDeckToHand();
         player.choosenCard = player.getSearchedCard(target);
         player.hand.remove(player.choosenCard);

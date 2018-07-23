@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class GreaterPurge extends Spell {
 
     public GreaterPurge() {
-        super.targetIsFriendly = false;
         super.name = "Greater Purge";
         super.MPCost = 7;
         super.type = cardType.Instant;
