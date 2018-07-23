@@ -14,13 +14,13 @@ public class Hero {
 
     static boolean warChanged = true;
 
-    static int movementSpeed = 1;
+    private static int movementSpeed = 1;
 
-    static int centerX = 1200/4;
-    static int centerY = 700/4 - 100;
+    private static int centerX = 1200/4;
+    private static int centerY = 700/4 - 100;
 
-    static int inViewX = centerX + MapDrawer.imageX - 1200*2/4;
-    static int inViewY = centerY + MapDrawer.imageY - 700*2/4;
+    private static int inViewX = centerX + MapDrawer.imageX - 1200*2/4;
+    private static int inViewY = centerY + MapDrawer.imageY - 700*2/4;
 
     static int inRealMapX = 0;
     static int inRealMapY = 0;
@@ -37,15 +37,15 @@ public class Hero {
     static int rectangleHeight = 20;
     static Direction lastDirection = Direction.Down;
 
-    static int X_Calculator(){
+    private static int X_Calculator(){
         return centerX - rectangleWidth/2;
     }
 
-    static int Y_Calculator(){
+    private static int Y_Calculator(){
         return centerY - rectangleHeight/2;
     }
 
-    static Image[][] heroImage = new Image[4][3]; //TODO: add images
+    private static Image[][] heroImage = new Image[4][3]; //TODO: add images
 
     static void initialize(){
         heroImage[0][0] = new Image(new File("HeroPics/Hero_Down_0.png").toURI().toString());
@@ -212,7 +212,7 @@ public class Hero {
             }
             MapDrawer.empty("War", 4, centerX*100/2100, centerY*100/2100);
             //TODO: add points
-            MapDrawer.empty("isNotPassAble", 2, 0, 0);
+            MapDrawer.empty("isNotPassAble", 2, 20, 20);
         }
     }
     public static void checkShop(){

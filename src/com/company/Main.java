@@ -8,7 +8,6 @@ import Menu.WarMenu;
 import Player.Player;
 import Shops.Shop;
 import View.GraphicThread;
-import View.Graphics;
 import World.World;
 
 import java.io.IOException;
@@ -21,22 +20,22 @@ import java.util.concurrent.Semaphore;
 
 
 public class Main {
-    public static final boolean thisIsServer = false;
-    static int port = 4444;
+    private static final boolean thisIsServer = false;
+    private static int port = 4444;
 
 
 
     public static GameMode gameMode = GameMode.SinglePlayer;
 
-    public static boolean exitToMain = false;
+    private static boolean exitToMain = false;
     public static boolean someoneLost = false;
 
     //Commands
-    static String Command = new String();
+    private static String Command = "";
 
     //Locks:
-    static Semaphore GameModeLock = new Semaphore(0);
-    static Semaphore messageLock = new Semaphore(0);
+    public static Semaphore GameModeLock = new Semaphore(0);
+    private static Semaphore messageLock = new Semaphore(0);
     public static Semaphore firstServerLock = new Semaphore(0);
     public static Semaphore secondServerLock = new Semaphore(0);
     public static Semaphore OnlineGameStart = new Semaphore(0);
@@ -322,8 +321,7 @@ public class Main {
             Thread graphicThread = new GraphicThread(world);
             graphicThread.start();
 
-//TODO: release lock
-            //GameModeLock.acquire();
+            GameModeLock.acquire();
             if(gameMode == GameMode.SinglePlayer) {
                 runSinglePlayer();
             }else{

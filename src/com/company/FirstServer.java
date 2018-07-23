@@ -10,7 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class FirstServer extends Thread {
-    public static final int port = 8888;
+    static final int port = 8888;
     @Override
     public void run() {
         try {

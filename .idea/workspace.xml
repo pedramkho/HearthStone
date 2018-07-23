@@ -3,27 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="c35f66ca-31c4-4377-ad12-f99435e5f46b" name="Default" comment="Main and WarMenu&#10;(inputStream added)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Down_0.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Down_0.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Down_1.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Down_1.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Down_2.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Down_2.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Left_0.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Left_0.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Left_1.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Left_1.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Left_2.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Left_2.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Right_0.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Right_0.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Right_1.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Right_1.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Right_2.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Right_2.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Up_0.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Up_0.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Up_1.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Up_1.png" />
-      <change beforePath="$PROJECT_DIR$/HeroPics/Hero_Up_2.png" afterPath="$PROJECT_DIR$/HeroPics/Hero_Up_2.png" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Graphics$1.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Graphics$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/View/Graphics$2.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Graphics$2.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/View/Graphics.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Graphics.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/View/Hero$Direction.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Hero$Direction.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/View/Hero.class" afterPath="$PROJECT_DIR$/out/production/Project/View/Hero.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/View/MapDrawer.class" afterPath="$PROJECT_DIR$/out/production/Project/View/MapDrawer.class" />
+      <change beforePath="$PROJECT_DIR$/src/View/Drawers.java" afterPath="$PROJECT_DIR$/src/View/Drawers.java" />
+      <change beforePath="$PROJECT_DIR$/src/View/GraphicThread.java" afterPath="$PROJECT_DIR$/src/View/GraphicThread.java" />
       <change beforePath="$PROJECT_DIR$/src/View/Graphics.java" afterPath="$PROJECT_DIR$/src/View/Graphics.java" />
       <change beforePath="$PROJECT_DIR$/src/View/Hero.java" afterPath="$PROJECT_DIR$/src/View/Hero.java" />
       <change beforePath="$PROJECT_DIR$/src/View/MapDrawer.java" afterPath="$PROJECT_DIR$/src/View/MapDrawer.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/FirstServer.java" afterPath="$PROJECT_DIR$/src/com/company/FirstServer.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,41 +31,14 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1344">
-              <caret line="356" column="11" lean-forward="false" selection-start-line="356" selection-start-column="11" selection-end-line="356" selection-end-column="11" />
+            <state relative-caret-position="168">
+              <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#readCommand#0;class#Main#0" expanded="false" />
                 <element signature="method#sendCommand#0;class#Main#0" expanded="false" />
                 <element signature="method#runSinglePlayer#0;class#Main#0" expanded="false" />
                 <element signature="method#war#0;class#Main#0" expanded="false" />
-                <element signature="method#main#0;class#Main#0" expanded="false" />
                 <element signature="method#print#0;class#Main#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WarMenu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Menu/WarMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="259" column="0" lean-forward="false" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
-              <folding>
-                <element signature="method#monsterSpellCasting_Spell#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#monsterSpellCasting_Will#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#useItem#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#useCard#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#changeTurn#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#preTurn#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#setCard#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#spellCasting_Spell#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#viewHand#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#viewGraveyard#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#viewMonsterField#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#viewItems#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#chooseAmulets#0;class#WarMenu#0" expanded="false" />
-                <element signature="method#isGameFinished#0;class#WarMenu#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -84,12 +47,11 @@
       <file leaf-file-name="Graphics.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/Graphics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+            <state relative-caret-position="147">
+              <caret line="22" column="46" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
               <folding>
                 <element signature="method#run#0;class#Graphics#0" expanded="false" />
-                <element signature="class#1442:2087" expanded="false" />
-                <element signature="method#handle#0;class#2171:2749" expanded="false" />
+                <element signature="class#1448:2093" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -98,8 +60,8 @@
       <file leaf-file-name="MapDrawer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/MapDrawer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="494" column="0" lean-forward="false" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
+            <state relative-caret-position="86">
+              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
               <folding>
                 <element signature="method#empty#0;class#MapDrawer#0" expanded="false" />
                 <element signature="method#initialize#0;class#MapDrawer#0" expanded="false" />
@@ -117,14 +79,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Hero.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Hero.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+            <state relative-caret-position="819">
+              <caret line="49" column="4" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#calculateNodes#0;class#Hero#0" expanded="false" />
+                <element signature="method#initialize#0;class#Hero#0" expanded="false" />
                 <element signature="method#moveLeft#0;class#Hero#0" expanded="false" />
                 <element signature="method#moveRight#0;class#Hero#0" expanded="false" />
                 <element signature="method#moveUp#0;class#Hero#0" expanded="false" />
@@ -142,47 +105,11 @@
       <file leaf-file-name="GraphicThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/GraphicThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
               <folding>
-                <element signature="e#240#241#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Drawers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/Drawers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="406" column="40" lean-forward="false" selection-start-line="406" selection-start-column="40" selection-end-line="406" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#drawStartMenu#0;class#Drawers#0" expanded="false" />
-                <element signature="method#findEnemyTargetCardIndex#0;class#Drawers#0" expanded="false" />
-                <element signature="method#drawCardMode#0;class#Drawers#0" expanded="false" />
-                <element signature="method#drawHand#0;class#Drawers#0" expanded="false" />
-                <element signature="method#drawGraveYard#0;class#Drawers#0" expanded="false" />
-                <element signature="method#drawMyField#0;class#Drawers#0" expanded="false" />
-                <element signature="e#12885#12886#0" expanded="true" />
-                <element signature="e#12953#12954#0" expanded="true" />
-                <element signature="method#drawEnemyField#0;class#Drawers#0" expanded="false" />
-                <element signature="e#14561#14562#0" expanded="true" />
-                <element signature="e#14645#14646#0" expanded="true" />
-                <element signature="e#16698#16699#0" expanded="true" />
-                <element signature="e#16756#16757#0" expanded="true" />
-                <element signature="method#drawChatRoom#0;class#Drawers#0" expanded="false" />
-                <element signature="e#18860#18861#0" expanded="true" />
-                <element signature="e#18919#18920#0" expanded="true" />
-                <element signature="method#drawRightSideMenuInWar#0;class#Drawers#0" expanded="false" />
-                <element signature="class#19500:19874" expanded="false" />
-                <element signature="class#20496:20716" expanded="false" />
-                <element signature="class#20913:21092" expanded="false" />
-                <element signature="e#21013#21014#0" expanded="true" />
-                <element signature="e#21081#21082#0" expanded="true" />
-                <element signature="method#drawPlayFieldInWar#0;class#Drawers#0" expanded="false" />
-                <element signature="method#drawTextFieldInWar#0;class#Drawers#0" expanded="false" />
-                <element signature="method#drawWar#0;class#Drawers#0" expanded="false" />
+                <element signature="e#213#214#0" expanded="true" />
+                <element signature="e#248#249#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -191,11 +118,45 @@
       <file leaf-file-name="FirstServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/FirstServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="252">
+              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#run#0;class#FirstServer#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Drawers.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/View/Drawers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="52" column="52" lean-forward="false" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#findEnemyTargetCardIndex#0;class#Drawers#0" expanded="false" />
+                <element signature="method#drawCardMode#0;class#Drawers#0" expanded="false" />
+                <element signature="method#drawHand#0;class#Drawers#0" expanded="false" />
+                <element signature="method#drawGraveYard#0;class#Drawers#0" expanded="false" />
+                <element signature="method#drawMyField#0;class#Drawers#0" expanded="false" />
+                <element signature="e#13519#13520#0" expanded="true" />
+                <element signature="e#13587#13588#0" expanded="true" />
+                <element signature="method#drawEnemyField#0;class#Drawers#0" expanded="false" />
+                <element signature="e#15203#15204#0" expanded="true" />
+                <element signature="e#15287#15288#0" expanded="true" />
+                <element signature="e#17340#17341#0" expanded="true" />
+                <element signature="e#17398#17399#0" expanded="true" />
+                <element signature="method#drawChatRoom#0;class#Drawers#0" expanded="false" />
+                <element signature="e#19510#19511#0" expanded="true" />
+                <element signature="e#19569#19570#0" expanded="true" />
+                <element signature="method#drawRightSideMenuInWar#0;class#Drawers#0" expanded="false" />
+                <element signature="e#21671#21672#0" expanded="true" />
+                <element signature="e#21739#21740#0" expanded="true" />
+                <element signature="method#drawPlayFieldInWar#0;class#Drawers#0" expanded="false" />
+                <element signature="method#drawTextFieldInWar#0;class#Drawers#0" expanded="false" />
+                <element signature="method#drawWar#0;class#Drawers#0" expanded="false" />
+                <element signature="class#WarMenuModes#0;class#Drawers#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -288,7 +249,6 @@
         <option value="$PROJECT_DIR$/src/Cards/MonsterCard/Friendly/ElvenMonster/ELvenDruid.java" />
         <option value="$PROJECT_DIR$/src/Cards/MonsterCard/Friendly/ElvenMonster/ElvenDruid.java" />
         <option value="$PROJECT_DIR$/src/View/Pages.java" />
-        <option value="$PROJECT_DIR$/src/View/GraphicThread.java" />
         <option value="$PROJECT_DIR$/src/Menu/War.java" />
         <option value="$PROJECT_DIR$/src/Cards/MonsterCard/Friendly/AtlantianMonsters/Kraken.java" />
         <option value="$PROJECT_DIR$/src/Cards/SpellCards/ArcaneBolt.java" />
@@ -320,14 +280,15 @@
         <option value="$PROJECT_DIR$/src/ItemsAndAmulets/Items/SmallHPPotion.java" />
         <option value="$PROJECT_DIR$/src/ItemsAndAmulets/Items/SmallMPPotion.java" />
         <option value="$PROJECT_DIR$/src/World/World.java" />
-        <option value="$PROJECT_DIR$/src/View/Drawers.java" />
         <option value="$PROJECT_DIR$/src/Menu/WarMenu.java" />
-        <option value="$PROJECT_DIR$/src/com/company/FirstServer.java" />
         <option value="$PROJECT_DIR$/src/com/company/SecondServer.java" />
+        <option value="$PROJECT_DIR$/src/View/Graphics.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/View/MapDrawer.java" />
-        <option value="$PROJECT_DIR$/src/View/Graphics.java" />
         <option value="$PROJECT_DIR$/src/View/Hero.java" />
+        <option value="$PROJECT_DIR$/src/View/GraphicThread.java" />
+        <option value="$PROJECT_DIR$/src/com/company/FirstServer.java" />
+        <option value="$PROJECT_DIR$/src/View/Drawers.java" />
       </list>
     </option>
   </component>
@@ -337,7 +298,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="723" />
     <option name="y" value="387" />
     <option name="width" value="976" />
@@ -359,7 +320,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -372,19 +336,10 @@
               <item name="Project - debug3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Project - debug3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project - debug3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -657,6 +612,10 @@
       <workItem from="1532023253075" duration="354000" />
       <workItem from="1532023719738" duration="37000" />
       <workItem from="1532024156093" duration="231000" />
+      <workItem from="1532034401829" duration="696000" />
+      <workItem from="1532036876356" duration="1601000" />
+      <workItem from="1532291190742" duration="5000" />
+      <workItem from="1532318292705" duration="834000" />
     </task>
     <task id="LOCAL-00001" summary="Drawer Updated">
       <created>1531145110700</created>
@@ -690,7 +649,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319145000" />
+    <option name="totallyTimeSpent" value="322281000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -702,7 +661,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -710,10 +670,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33038673" sideWeight="0.59791666" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33038673" sideWeight="0.60260415" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.49583334" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33038673" sideWeight="0.40208334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33038673" sideWeight="0.39739582" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296433" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -855,18 +815,11 @@
           <option name="timeStamp" value="110" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="112" />
+      <option name="time" value="114" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Cards/SpellCards/GreaterPurge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cards/SpellCards/HealingWard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -1137,6 +1090,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="747" column="0" lean-forward="false" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Menu/WarMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1160,78 +1120,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/javafx-src.zip!/javafx/animation/Animation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2730">
+          <caret line="184" column="0" lean-forward="false" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Graphics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="22" column="46" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+          <folding>
+            <element signature="method#run#0;class#Graphics#0" expanded="false" />
+            <element signature="class#1448:2093" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1344">
-          <caret line="356" column="11" lean-forward="false" selection-start-line="356" selection-start-column="11" selection-end-line="356" selection-end-column="11" />
+        <state relative-caret-position="168">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#readCommand#0;class#Main#0" expanded="false" />
             <element signature="method#sendCommand#0;class#Main#0" expanded="false" />
             <element signature="method#runSinglePlayer#0;class#Main#0" expanded="false" />
             <element signature="method#war#0;class#Main#0" expanded="false" />
-            <element signature="method#main#0;class#Main#0" expanded="false" />
             <element signature="method#print#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Thread.java">
+    <entry file="file://$PROJECT_DIR$/src/View/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="747" column="0" lean-forward="false" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
+        <state relative-caret-position="819">
+          <caret line="49" column="4" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#calculateNodes#0;class#Hero#0" expanded="false" />
+            <element signature="method#initialize#0;class#Hero#0" expanded="false" />
+            <element signature="method#moveLeft#0;class#Hero#0" expanded="false" />
+            <element signature="method#moveRight#0;class#Hero#0" expanded="false" />
+            <element signature="method#moveUp#0;class#Hero#0" expanded="false" />
+            <element signature="method#moveDown#0;class#Hero#0" expanded="false" />
+            <element signature="method#setHeroImage#0;class#Hero#0" expanded="false" />
+            <element signature="method#drawHero#0;class#Hero#0" expanded="false" />
+            <element signature="method#checkWar#0;class#Hero#0" expanded="false" />
+            <element signature="method#checkShop#0;class#Hero#0" expanded="false" />
+            <element signature="class#Direction#0;class#Hero#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/GraphicThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding>
-            <element signature="e#240#241#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Drawers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="406" column="40" lean-forward="false" selection-start-line="406" selection-start-column="40" selection-end-line="406" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#drawStartMenu#0;class#Drawers#0" expanded="false" />
-            <element signature="method#findEnemyTargetCardIndex#0;class#Drawers#0" expanded="false" />
-            <element signature="method#drawCardMode#0;class#Drawers#0" expanded="false" />
-            <element signature="method#drawHand#0;class#Drawers#0" expanded="false" />
-            <element signature="method#drawGraveYard#0;class#Drawers#0" expanded="false" />
-            <element signature="method#drawMyField#0;class#Drawers#0" expanded="false" />
-            <element signature="e#12885#12886#0" expanded="true" />
-            <element signature="e#12953#12954#0" expanded="true" />
-            <element signature="method#drawEnemyField#0;class#Drawers#0" expanded="false" />
-            <element signature="e#14561#14562#0" expanded="true" />
-            <element signature="e#14645#14646#0" expanded="true" />
-            <element signature="e#16698#16699#0" expanded="true" />
-            <element signature="e#16756#16757#0" expanded="true" />
-            <element signature="method#drawChatRoom#0;class#Drawers#0" expanded="false" />
-            <element signature="e#18860#18861#0" expanded="true" />
-            <element signature="e#18919#18920#0" expanded="true" />
-            <element signature="method#drawRightSideMenuInWar#0;class#Drawers#0" expanded="false" />
-            <element signature="class#19500:19874" expanded="false" />
-            <element signature="class#20496:20716" expanded="false" />
-            <element signature="class#20913:21092" expanded="false" />
-            <element signature="e#21013#21014#0" expanded="true" />
-            <element signature="e#21081#21082#0" expanded="true" />
-            <element signature="method#drawPlayFieldInWar#0;class#Drawers#0" expanded="false" />
-            <element signature="method#drawTextFieldInWar#0;class#Drawers#0" expanded="false" />
-            <element signature="method#drawWar#0;class#Drawers#0" expanded="false" />
+            <element signature="e#213#214#0" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/FirstServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="252">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#run#0;class#FirstServer#0" expanded="false" />
@@ -1239,22 +1196,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Graphics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-          <folding>
-            <element signature="method#run#0;class#Graphics#0" expanded="false" />
-            <element signature="class#1442:2087" expanded="false" />
-            <element signature="method#handle#0;class#2171:2749" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/MapDrawer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="494" column="0" lean-forward="false" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
+        <state relative-caret-position="86">
+          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
           <folding>
             <element signature="method#empty#0;class#MapDrawer#0" expanded="false" />
             <element signature="method#initialize#0;class#MapDrawer#0" expanded="false" />
@@ -1271,22 +1216,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Hero.java">
+    <entry file="file://$PROJECT_DIR$/src/View/Drawers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+        <state relative-caret-position="190">
+          <caret line="52" column="52" lean-forward="false" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#calculateNodes#0;class#Hero#0" expanded="false" />
-            <element signature="method#moveLeft#0;class#Hero#0" expanded="false" />
-            <element signature="method#moveRight#0;class#Hero#0" expanded="false" />
-            <element signature="method#moveUp#0;class#Hero#0" expanded="false" />
-            <element signature="method#moveDown#0;class#Hero#0" expanded="false" />
-            <element signature="method#setHeroImage#0;class#Hero#0" expanded="false" />
-            <element signature="method#drawHero#0;class#Hero#0" expanded="false" />
-            <element signature="method#checkWar#0;class#Hero#0" expanded="false" />
-            <element signature="method#checkShop#0;class#Hero#0" expanded="false" />
-            <element signature="class#Direction#0;class#Hero#0" expanded="false" />
+            <element signature="method#findEnemyTargetCardIndex#0;class#Drawers#0" expanded="false" />
+            <element signature="method#drawCardMode#0;class#Drawers#0" expanded="false" />
+            <element signature="method#drawHand#0;class#Drawers#0" expanded="false" />
+            <element signature="method#drawGraveYard#0;class#Drawers#0" expanded="false" />
+            <element signature="method#drawMyField#0;class#Drawers#0" expanded="false" />
+            <element signature="e#13519#13520#0" expanded="true" />
+            <element signature="e#13587#13588#0" expanded="true" />
+            <element signature="method#drawEnemyField#0;class#Drawers#0" expanded="false" />
+            <element signature="e#15203#15204#0" expanded="true" />
+            <element signature="e#15287#15288#0" expanded="true" />
+            <element signature="e#17340#17341#0" expanded="true" />
+            <element signature="e#17398#17399#0" expanded="true" />
+            <element signature="method#drawChatRoom#0;class#Drawers#0" expanded="false" />
+            <element signature="e#19510#19511#0" expanded="true" />
+            <element signature="e#19569#19570#0" expanded="true" />
+            <element signature="method#drawRightSideMenuInWar#0;class#Drawers#0" expanded="false" />
+            <element signature="e#21671#21672#0" expanded="true" />
+            <element signature="e#21739#21740#0" expanded="true" />
+            <element signature="method#drawPlayFieldInWar#0;class#Drawers#0" expanded="false" />
+            <element signature="method#drawTextFieldInWar#0;class#Drawers#0" expanded="false" />
+            <element signature="method#drawWar#0;class#Drawers#0" expanded="false" />
+            <element signature="class#WarMenuModes#0;class#Drawers#0" expanded="false" />
           </folding>
         </state>
       </provider>

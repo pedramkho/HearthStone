@@ -20,7 +20,7 @@ import javafx.util.Duration;
 public class Graphics extends Application {
     public static int Height = 700;
     public static int Width = 1200;
-    public static Pages page = Pages.Map;
+    public static Pages page = Pages.StartMenu;
     Group root = new Group();
     static World world;
 
@@ -78,6 +78,7 @@ public class Graphics extends Application {
 
             @Override
             public void handle(ActionEvent event) {
+                MapDrawer.runMediaPlayer();
 
                 if(page == Pages.StartMenu){
                     Drawers.drawStartMenu(root);

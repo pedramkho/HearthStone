@@ -30,14 +30,27 @@ public class Drawers {
         singlePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Clicked");
+                Main.gameMode = GameMode.SinglePlayer;
                 Graphics.page = Pages.Map;
+                Main.GameModeLock.release();
+            }
+        });
+
+        Button multiplayer = new Button("Multi Player");
+        multiplayer.setLayoutX(Graphics.Width / 2 - 50);
+        multiplayer.setLayoutY(Graphics.Height / 2 - 200);
+        multiplayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Main.gameMode = GameMode.MultiPlayer;
+                Graphics.page = Pages.War;
+                Main.GameModeLock.release();
             }
         });
 
         Button settings = new Button("Settings");
         settings.setLayoutX(Graphics.Width / 2 - 35);
-        settings.setLayoutY(Graphics.Height / 2 - 170);
+        settings.setLayoutY(Graphics.Height / 2 - 150);
         settings.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -55,10 +68,12 @@ public class Drawers {
             }
         });
 
-        root.getChildren().addAll(singlePlayer, settings, exit);
+        root.getChildren().addAll(singlePlayer, multiplayer, settings, exit);
+
+
     }
 
-    static int findEnemyTargetCardIndex(Player enemy) {
+    private static int findEnemyTargetCardIndex(Player enemy) {
         for (int i = 0; i < enemy.monsterField.size(); i++) {
             if (enemy.monsterField.get(i) == targetCard) {
                 return i;
@@ -67,11 +82,11 @@ public class Drawers {
         return -1;
     }
 
-    static WarMenuModes warMenuMode = WarMenuModes.ShowHand;
-    static Card selectedCard = null;
-    static Card targetCard = null;
-    static Card selectedCardOnHand = null;
-    static void drawCardMode(Group root, World world) {
+    private static WarMenuModes warMenuMode = WarMenuModes.ShowHand;
+    private static Card selectedCard = null;
+    private static Card targetCard = null;
+    private static Card selectedCardOnHand = null;
+    private static void drawCardMode(Group root, World world) {
         int X = 2 * Graphics.Width / 3;
         Text text = new Text(X, 10, "Choose Target");
         root.getChildren().addAll(text);
@@ -127,8 +142,8 @@ public class Drawers {
             }
         }
     }
-    static void drawItem(Group root, World world) { }
-    static void drawHand(Group root, World world) {
+    private static void drawItem(Group root, World world) { }
+    private static void drawHand(Group root, World world) {
         int X = 2 * Graphics.Width / 3;
         int Y = 5;
 
@@ -200,7 +215,7 @@ public class Drawers {
             root.getChildren().addAll(playCard);
         }
     }
-    static void drawGraveYard(Group root, World world) {
+    private static void drawGraveYard(Group root, World world) {
         int X = 2 * Graphics.Width / 3;
         int Y = 5;
 
@@ -228,7 +243,7 @@ public class Drawers {
         }
     }
 
-    static void drawMyField(Group root, World world) {
+    private static void drawMyField(Group root, World world) {
         int X = Graphics.Width / 3;
 
         double monsterCardWidth = Graphics.Width / 3.0 / 6;
@@ -313,7 +328,7 @@ public class Drawers {
         root.getChildren().addAll(graveYard, graveYardText);
 
     }
-    static void drawEnemyField(Group root, World world) {
+    private static void drawEnemyField(Group root, World world) {
         int X = Graphics.Width / 3;
         int shift = -100;
         double monsterCardWidth = Graphics.Width / 3.0 / 6;
@@ -404,7 +419,7 @@ public class Drawers {
 
     }
 
-    static void drawChatRoom(Group root){
+    private static void drawChatRoom(Group root){
 
 
         Button send = new Button("Send");
@@ -435,7 +450,7 @@ public class Drawers {
     }
 
 
-    static void drawRightSideMenuInWar(Group root, World world) {
+    private static void drawRightSideMenuInWar(Group root, World world) {
 
         int X = 2 * Graphics.Width / 3;
 
@@ -509,11 +524,11 @@ public class Drawers {
         }
 
     }
-    static void drawPlayFieldInWar(Group root, World world) {
+    private static void drawPlayFieldInWar(Group root, World world) {
         drawMyField(root, world);
         drawEnemyField(root, world);
     }
-    static void drawTextFieldInWar(Group root, World world) {
+    private static void drawTextFieldInWar(Group root, World world) {
         String string = new String();
         Text info = new Text(string);
         if (selectedCard != null) {
