@@ -3,7 +3,6 @@ package View;
 import com.company.Main;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -25,7 +24,7 @@ public class Hero {
     static int inRealMapX = 0;
     static int inRealMapY = 0;
 
-    static void calculateNodes(){
+    private static void calculateNodes(){
         inViewX = centerX + MapDrawer.imageX - 1200*2/4;
         inViewY = centerY + MapDrawer.imageY - 700*2/4;
 
@@ -33,9 +32,9 @@ public class Hero {
         inRealMapY = (centerY * 100) / MapDrawer.imageRecHeight;
     }
 
-    static int rectangleWidth = 20;
-    static int rectangleHeight = 20;
-    static Direction lastDirection = Direction.Down;
+    private static int rectangleWidth = 20;
+    private static int rectangleHeight = 20;
+    private static Direction lastDirection = Direction.Down;
 
     private static int X_Calculator(){
         return centerX - rectangleWidth/2;
@@ -198,6 +197,10 @@ public class Hero {
         root.getChildren().addAll(rectangle);
     }
 
+
+    private static int[] bridges_X = {26, 44, 57};
+    private static int[] bridges_Y = {45, 60, 91};
+
     public static void checkWar(){
         int[] X = {((centerX - rectangleWidth/2)*100/MapDrawer.imageRecWidth + 100) % 100, ((centerX + rectangleWidth/2)*100/MapDrawer.imageRecWidth + 100) % 100};
         int[] Y = {((centerY - rectangleHeight/2)*100/MapDrawer.imageRecWidth + 100) % 100, ((centerY + rectangleHeight/2)*100/MapDrawer.imageRecWidth + 100) % 100};
@@ -212,7 +215,7 @@ public class Hero {
             }
             MapDrawer.empty("War", 4, centerX*100/2100, centerY*100/2100);
             //TODO: add points
-            MapDrawer.empty("isNotPassAble", 2, 20, 20);
+            MapDrawer.empty("isNotPassAble", 2, bridges_X[Main.warNumber%3], bridges_Y[Main.warNumber%3]);
         }
     }
     public static void checkShop(){
