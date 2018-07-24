@@ -59,10 +59,13 @@ public class Main {
         messageLock.release();
     }
 
-    static void runSinglePlayer(){
+    private static void runSinglePlayer(){
+
         world.thePlayer.initializePlayer();
+
         for (warNumber = 0; warNumber < 4; warNumber++) {
-            world.thePlayer.preWaInitlize();
+            world.thePlayer.preWarInitialize();
+
             int turn = 1;
             switch (warNumber) {
                 case 0:
@@ -126,7 +129,7 @@ public class Main {
             //--------------------------------------------------------------
 
 
-            war(world, starter, other, sideName, turn);
+            war(world, world.thePlayer, world.theEnemy, world.thePlayer, turn);
 
 
             if (someoneLost) {
@@ -136,8 +139,9 @@ public class Main {
                         world.thePlayer.inventory.items.remove(new MysticHourglass());
                         warNumber--;
                         someoneLost = false;
+                        print("You used MysticHourglass!");
                     } else {
-                        print("You Lost!");
+                        print(world.thePlayer + " Lost!");
                         return;
                     }
                 }
@@ -165,6 +169,11 @@ public class Main {
                 sideName = starter;
             }
 
+            if (sideName == starter) {
+                enemySide = other;
+            } else {
+                enemySide = starter;
+            }
 
             playerOnTurn = sideName;
 
@@ -257,7 +266,7 @@ public class Main {
                     print(sideName.actorName + " quit!");
                     someoneLost = true;
                     exitToMain = true;
-                    return;
+                    sideName.Hero.HP = 0;
                 }
 
                 //info Card:
@@ -268,8 +277,6 @@ public class Main {
                 }
 
                 Main.commandInProgress.release();
-
-
             }
 
             turn++;
@@ -296,6 +303,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
         player = world.thePlayer;
+        onlineWorld = world;
 
         if(thisIsServer){
             //This is server

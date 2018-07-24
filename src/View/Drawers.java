@@ -99,8 +99,25 @@ public class Drawers {
                 @Override
                 public void handle(MouseEvent event) {
                     Main.sendCommand("use " + world.thePlayer.monsterField.indexOf(selectedCard));
+
+                    synchronized (new Object()){
+                        try {
+                            wait(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
                     if (((Monster)selectedCard).readyToAttack){
                         Main.sendCommand("Attack " + findEnemyTargetCardIndex(world.theEnemy));
+
+                        synchronized (new Object()){
+                            try {
+                                wait(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         Main.sendCommand("Exit");
                     }
                     targetCard = null;
@@ -119,8 +136,32 @@ public class Drawers {
                         @Override
                         public void handle(MouseEvent event) {
                             Main.sendCommand("use " + world.thePlayer.monsterField.indexOf(selectedCard));
+                            synchronized (new Object()){
+                                try {
+                                    wait(100);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
                             Main.sendCommand("Cast");
+
+                            synchronized (new Object()){
+                                try {
+                                    wait(100);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                             Main.sendCommand("Target " + findEnemyTargetCardIndex(world.theEnemy));
+
+                            synchronized (new Object()){
+                                try {
+                                    wait(100);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                             Main.sendCommand("Exit");
                             targetCard = null;
                         }
@@ -135,6 +176,14 @@ public class Drawers {
                     @Override
                     public void handle(MouseEvent event) {
                         Main.sendCommand("use " + world.thePlayer.monsterField.indexOf(selectedCard));
+
+                        synchronized (new Object()){
+                            try {
+                                wait(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         Main.sendCommand("Cast");
                     }
                 });
@@ -178,11 +227,27 @@ public class Drawers {
                 @Override
                 public void handle(MouseEvent event) {
                     Main.sendCommand("set " + world.thePlayer.hand.indexOf(selectedCardOnHand));
+
+                    synchronized (new Object()){
+                        try {
+                            wait(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     if(selectedCardOnHand instanceof Monster){
 
                         if(((Monster)selectedCardOnHand).needChoosing){
                             if(selectedCardOnHand != null) {
                                 Main.sendCommand("Target " + findEnemyTargetCardIndex(world.theEnemy));
+
+                                synchronized (new Object()){
+                                    try {
+                                        wait(100);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
                                 Main.sendCommand("Exit");
                             }else{
                                 Main.sendCommand("Exit");
@@ -197,9 +262,25 @@ public class Drawers {
                             if(selectedCardOnHand != null) {
                                 if(((Spell)selectedCardOnHand).targetIsFriendly){
                                     Main.sendCommand("Target " + world.thePlayer.monsterField.indexOf(selectedCard));
+
+                                    synchronized (new Object()){
+                                        try {
+                                            wait(100);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
                                     Main.sendCommand("Exit");
                                 }else {
                                     Main.sendCommand("Target " + findEnemyTargetCardIndex(world.theEnemy));
+
+                                    synchronized (new Object()){
+                                        try {
+                                            wait(100);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
                                     Main.sendCommand("Exit");
                                 }
                             }else{

@@ -1,6 +1,5 @@
 package View;
 
-import Player.Player;
 import World.World;
 import com.company.Main;
 import javafx.animation.KeyFrame;

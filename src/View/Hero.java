@@ -44,7 +44,7 @@ public class Hero {
         return centerY - rectangleHeight/2;
     }
 
-    private static Image[][] heroImage = new Image[4][3]; //TODO: add images
+    private static Image[][] heroImage = new Image[4][3];
 
     static void initialize(){
         heroImage[0][0] = new Image(new File("HeroPics/Hero_Down_0.png").toURI().toString());

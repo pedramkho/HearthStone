@@ -60,10 +60,46 @@ public class Player implements Serializable{
     //added
     public Inventory inventory = new Inventory(deck);
     //end
-    public void preWaInitlize(){
+    public void preWarInitialize(){
         this.Hero.HP = this.MaxHP;
         this.MP = 1;
         this.currentMaxMP = 1;
+    }
+
+    public void initializePlayer_formerMethod() {
+        Main.again = ("Please enter your name : ");
+        System.out.print(Main.again);
+        String name = Main.scanner.nextLine();
+        actorName = name;
+        //add items to inventory
+        inventory.removeOrAddToItems(new MysticHourglass(),3);
+        inventory.removeOrAddToItems(new SmallHPPotion(),2);
+        inventory.removeOrAddToItems(new SmallMPPotion(),2);
+        //add Elven monsters to deck
+        inventory.removeOrAddToDeck(new ElvenRanger(),2);
+        inventory.removeOrAddToDeck(new ElvenHunter(),2);
+        inventory.removeOrAddToDeck(new ElvenGuardsman(),1);
+        inventory.removeOrAddToDeck(new ElvenAssassin(),1);
+        inventory.removeOrAddToDeck(new ElvenDruid(),1);
+        //add DragonBreed monsters to deck
+        inventory.removeOrAddToDeck(new LesserWhelp(),2);
+        inventory.removeOrAddToDeck(new Dragonling(),2);
+        inventory.removeOrAddToDeck(new ArmoredDragon(),1);
+        inventory.removeOrAddToDeck(new YellowDrake(),1);
+        inventory.removeOrAddToDeck(new BlueDragon(),1);
+        //add Atlantian monsters to deck
+        inventory.removeOrAddToDeck(new MurlocCrawler(),2);
+        inventory.removeOrAddToDeck(new MurlocWarrior(),2);
+        inventory.removeOrAddToDeck(new GiantCrab(),1);
+        inventory.removeOrAddToDeck(new SharkMan(),1);
+        inventory.removeOrAddToDeck(new NagaSiren(),1);
+        //add spell cards to deck
+        inventory.removeOrAddToDeck(new FirstAidKit(),3);
+        inventory.removeOrAddToDeck(new ThrowingKnives(),3);
+        inventory.removeOrAddToDeck(new PoisionousCauldron(),1);
+        inventory.removeOrAddToDeck(new HealingWard(),1);
+        inventory.removeOrAddToDeck(new WarDrum(),1);
+        this.shuffleDeckCards();
     }
     public void initializePlayer() {
         inventory.cards = new ArrayList<>(CustomGame.data.initialInventoryCards);

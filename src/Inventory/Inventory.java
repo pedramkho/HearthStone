@@ -14,11 +14,12 @@ import data.constants.General;
 import exceptions.inventoryExceptions.DeckIsFull;
 import exceptions.inventoryExceptions.InventoryException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static data.constants.General.MAX_DECK_SIZE;
 
-public class Inventory {
+public class Inventory implements Serializable{
     public ArrayList<Card> deck = new ArrayList<>();
     public ArrayList<Card> cards;
     public ArrayList<Item> items ;
