@@ -1,1 +1,1 @@
-# An implementation of the game HearthStone for Advaced Programming course.
+An implementation of the game HearthStone for Advanced Programming course.
